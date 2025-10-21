@@ -1,0 +1,88 @@
+/*-
+ * #%L
+ * This file is part of QuPath.
+ * %%
+ * Copyright (C) 2014 - 2016 The Queen's University of Belfast, Northern Ireland
+ * Contact: IP Management (ipmanagement@qub.ac.uk)
+ * Copyright (C) 2018 - 2024 QuPath developers, The University of Edinburgh
+ * %%
+ * QuPath is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ * 
+ * QuPath is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License 
+ * along with QuPath.  If not, see <https://www.gnu.org/licenses/>.
+ * #L%
+ */
+
+package qupath.lib.objects;
+
+import qupath.lib.measurements.MeasurementList;
+import qupath.lib.objects.classes.PathClass;
+import qupath.lib.roi.interfaces.ROI;
+
+/**
+ * An annotation PathObject.
+ * <p>
+ * These tend to be larger and less common than PathDetectionObjects.
+ * <p>
+ * As such, they can be represented and displayed with more emphasis on flexibility, rather than efficiency.
+ * 
+ * @author Pete Bankhead
+ *
+ * @see PathDetectionObject
+ *
+ */
+public class PathAnnotationObject extends PathROIObject {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private static final String KEY_ANNOTATION_TEXT = "ANNOTATION_DESCRIPTION";
+	
+	/**
+	 * Default constructor. Should not be used directly, instead use {@link PathObjects#createAnnotationObject(ROI)}.
+	 */
+	public PathAnnotationObject() {
+		super();
+	}
+
+	PathAnnotationObject(ROI pathROI) {
+		super(pathROI, null);
+	}
+	
+	PathAnnotationObject(ROI pathROI, PathClass pathClass) {
+		super(pathROI, pathClass);
+	}
+	
+	PathAnnotationObject(ROI pathROI, PathClass pathClass, MeasurementList measurements) {
+		super(pathROI, pathClass, measurements);
+	}
+	
+	/**
+	 * Set a free text description for this annotation.
+	 * 
+	 * @param text to use as a description; if null, any existing description will be removed
+	 */
+	public void setDescription(final String text) {
+		// Don't store unless we need to (which can also help avoid creating unnecessary metadata stores)
+		if (text == null)
+			getMetadata().remove(KEY_ANNOTATION_TEXT);
+		else
+			getMetadata().put(KEY_ANNOTATION_TEXT, text);
+	}
+
+	/**
+	 * Get a free text description previously set for this annotation.
+	 * @return 
+	 */
+	public String getDescription() {
+		return getMetadata().get(KEY_ANNOTATION_TEXT);
+	}
+
+}
