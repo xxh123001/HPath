@@ -1,0 +1,11 @@
+module hpath.openslide {
+	
+	requires java.desktop;
+	
+    requires hpath.core;
+
+    requires slf4j.api;
+    requires com.google.gson;
+	requires openslide;
+
+}

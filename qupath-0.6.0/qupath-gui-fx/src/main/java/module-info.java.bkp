@@ -1,0 +1,47 @@
+module hpath.gui.fx {
+
+    requires java.base;
+    requires java.desktop;
+	requires java.datatransfer;
+	requires java.prefs;
+	requires java.scripting;
+	requires java.net.http;
+	
+	requires transitive javafx.base;
+	requires transitive javafx.controls;
+	requires transitive javafx.graphics;
+	requires javafx.swing;
+	requires javafx.web;
+	
+	requires transitive hpath.core.processing;
+	
+	requires transitive org.controlsfx.controls;
+	requires jfxtras.menu;
+	requires slf4j.api;
+
+	exports hpath.lib.display;
+	exports hpath.lib.gui;
+	exports hpath.lib.gui.commands;
+	exports hpath.lib.gui.dialogs;
+	exports hpath.lib.gui.extensions;
+	exports hpath.lib.gui.icons;
+	exports hpath.lib.gui.images.servers;
+	exports hpath.lib.gui.images.stores;
+	exports hpath.lib.gui.logging;
+	exports hpath.lib.gui.models;
+	exports hpath.lib.gui.panes;
+	exports hpath.lib.gui.panes.classify;
+	exports hpath.lib.gui.plots;
+	exports hpath.lib.gui.prefs;
+	exports hpath.lib.gui.plugins;
+	exports hpath.lib.gui.scripting;
+	exports hpath.lib.gui.tma;
+	exports hpath.lib.gui.tools;
+	exports hpath.lib.gui.viewer;
+	exports hpath.lib.gui.viewer.tools;
+	exports hpath.lib.gui.viewer.recording;
+	exports hpath.lib.gui.viewer.overlays;
+	
+	uses hpath.lib.gui.extensions.QuPathExtension;
+	
+}

@@ -1,0 +1,12 @@
+module hpath.extension.scripteditor {
+	
+    requires hpath.gui.fx;
+
+    requires slf4j.api;
+	requires org.jfree.svg;
+	requires java.desktop;
+	
+	provides hpath.lib.gui.extensions.QuPathExtension with
+		hpath.lib.extension.svg.SvgExtension;
+
+}

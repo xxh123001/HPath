@@ -1,0 +1,22 @@
+module hpath.extension.processing {
+	
+	requires java.base;
+	requires java.desktop;
+	
+	requires javafx.controls;
+	
+	requires hpath.core;
+    requires hpath.core.processing;
+    requires hpath.gui.fx;
+
+    requires slf4j.api;
+    requires org.bytedeco.opencv;
+	requires org.controlsfx.controls;
+	requires org.locationtech.jts;
+	
+	exports hpath.imagej.gui;
+	
+	provides hpath.lib.gui.extensions.QuPathExtension with
+		hpath.imagej.gui.IJExtension, hpath.opencv.gui.OpenCVExtension;
+	
+}

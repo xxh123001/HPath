@@ -1,0 +1,21 @@
+module hpath.extension.bioformats {
+	
+	requires java.base;
+	
+	requires javafx.controls;
+	requires javafx.swing;
+	
+	requires hpath.core;
+    requires hpath.gui.fx;
+    
+//    requires formats.gpl;
+
+    requires slf4j.api;
+    
+    provides hpath.lib.images.servers.ImageServerBuilder with
+    	hpath.lib.images.servers.bioformats.BioFormatsServerBuilder;
+    
+    provides hpath.lib.images.writers.ImageWriter with
+    	hpath.lib.images.writers.ome.OMETiffWriter;
+	
+}

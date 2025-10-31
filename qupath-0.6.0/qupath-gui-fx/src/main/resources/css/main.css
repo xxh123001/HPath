@@ -1,0 +1,223 @@
+/*
+ * Some CSS that should be applied in QuPath.
+ */
+
+/* Define colors that may be used by script editors and log viewers */
+.root {
+	
+  -qp-script-text-color: -fx-text-background-color;
+	
+  -qp-script-background-color: -fx-control-inner-background;
+
+  -qp-script-error-color: ladder(-qp-script-background-color, red 30%, darkred 50%, red 70%);
+
+  -qp-script-warn-color: darkorange; /* ladder(-qp-script-background-color, darkorange 30%, orange 50%, darkorange 70%); */
+
+  -qp-script-info-color: -qp-script-text-color;
+
+  -qp-script-debug-color: ladder(-qp-script-background-color, derive(royalblue, 25%) 49%, derive(royalblue, -5%) 50%);
+
+  -qp-script-trace-color: ladder(-qp-script-background-color, derive(-qp-script-text-color, -30%) 49%, derive(-qp-script-text-color, 30%) 50%);
+  
+  -qp-script-keyword-color: ladder(-qp-script-background-color, darkorange 50%, orange 51%);
+  
+  -qp-script-paren-color: -qp-script-text-color;
+
+  -qp-script-bracket-color: -qp-script-text-color;
+
+  -qp-script-brace-color: -qp-script-text-color;
+
+  -qp-script-semicolon-color: -qp-script-text-color;
+
+  -qp-script-string-color: ladder(-qp-script-background-color, derive(seagreen, 50%) 49%, derive(seagreen, -5%) 50%);
+
+  -qp-script-number-color: ladder(-qp-script-background-color, derive(orange, 50%) 49%, derive(orange, -5%) 50%);
+
+  -qp-script-comment-color: ladder(-qp-script-background-color, derive(-qp-script-text-color, -30%) 49%, derive(-qp-script-text-color, 30%) 50%);
+  
+  -qp-script-link-color: ladder(-qp-script-background-color, derive(purple, 25%) 49%, derive(purple, -5%) 50%);
+
+  -qp-script-tag-color: ladder(-qp-script-background-color, derive(orange, 25%) 49%, derive(orange, -5%) 50%);
+
+  -qp-script-attribute-color: ladder(-qp-script-background-color, derive(royalblue, 25%) 49%, derive(royalblue, -5%) 50%);
+
+  -qp-script-tag-color: -qp-script-text-color;
+
+}
+
+/* Location text, slider backgrounds to show on the viewer */
+.viewer-overlay {
+  -fx-background-color: rgba(0, 0, 0, 0.4);
+  -fx-base: rgb(45, 48, 50);
+  -fx-background: derive(-fx-base, -10%);
+  -fx-control-inner-background: derive(-fx-base, 10%);
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background,1%);
+  -fx-light-text-color: white;
+}
+
+.viewer-overlay.viewer-dims {
+  -fx-padding: 10;
+  -fx-background-radius: 5;
+}
+
+  /* Text objects used as placeholders */
+.text-placeholder {
+  -fx-fill: -fx-text-base-color;
+  -fx-opacity: 0.8;
+}
+
+/* Soften the main toolbar icons */
+.tool-bar .qupath-icon * {
+  -fx-opacity: 0.8;
+}
+
+/* Adapt menu icon colors */
+.qupath-icon {
+  -fx-text-fill: -fx-text-base-color;
+}
+
+
+/* Used in command finder for help text */
+.popover * {
+    -fx-background-color: -fx-base;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+/* Style a minimal colorpicker (just a clickable square) */
+.minimal-color-picker {
+  -fx-color-label-visible: false;
+  -fx-background-color: null;
+  -fx-color: -fx-base;
+}
+
+.minimal-color-picker .color-palette {
+  -fx-background: -fx-base;
+}
+
+.minimal-color-picker > .color-picker-label {
+  -fx-padding: 0;
+}
+
+.minimal-color-picker:hover {
+  -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0 , 0, 2);
+}
+
+.minimal-color-picker:focused {
+  -fx-background-color: null;
+  -fx-background-radius: 0;
+}
+
+.minimal-color-picker > .color-picker-label > .picker-color > .picker-color-rect {
+  -fx-stroke: null;
+}
+
+/* Set opacity for 1, even if the control is disabled (usually sets opacity to 0.4) */
+.always-opaque,
+.always-opaque:hover,
+.always-opaque:focused,
+.always-opaque:disabled,
+.always-opaque:disabled > * {
+  -fx-opacity: 1;
+}
+
+.info-message {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 1, 0, 0, 0);
+}
+
+.info-message.warn {
+  -fx-fill: -qp-script-warn-color;
+}
+
+.info-message.error {
+  -fx-fill: -qp-script-error-color;
+}
+
+.info-message.info {
+  -fx-fill: -qp-script-debug-color;
+}
+
+.warn-label-text {
+  -fx-text-fill: -qp-script-warn-color;
+}
+
+.error-label-text {
+  -fx-text-fill: -qp-script-error-color;
+}
+
+.toolbar-badge > .badge-text {
+  -fx-fill: white;
+  -fx-font-size: 6pt;
+  -fx-font-weight: bold;
+  -fx-text-alignment: center;
+}
+
+/* To prevent icons from being dark when the row is selected
+ * Removed because it was messing up the tooltip text color for minimal-color-picker -
+ * and updating qupath-icon to use the background color is hopefully sufficient.
+ * (Code left temporarily in case it's needed again.)
+ */
+/*.list-cell .button .text {*/
+/*  -fx-fill: -fx-text-base-color;*/
+/*}*/
+/*.table-row-cell .button .text {*/
+/*  -fx-fill: -fx-text-base-color;*/
+/*}*/
+
+.list-cell:focused .qupath-icon {
+    -fx-text-fill: -fx-text-background-color;
+}
+
+.list-cell .extension-manager-list-icon {
+  -fx-text-fill: -fx-text-background-color;
+}
+
+.table-row-cell .extension-manager-list-icon {
+  -fx-text-fill: -fx-text-background-color;
+}
+
+.list-cell > .failed-extension {
+  -fx-text-background-color: -qp-script-error-color;
+  -fx-opacity: 0.8;
+}
+
+.list-cell > .failed-extension .extension-manager-list-icon {
+  -fx-text-fill: -qp-script-error-color;
+}
+
+/* Don't make the title for the training piechart too large */
+.training-chart .chart-title {
+  -fx-font-size: 1em;
+  -fx-font-weight: bold;
+}
+
+/* Project browser */
+.project-browser .tree-cell {
+  -fx-font-family: arial;
+}
+
+.project-browser .tree-cell.current-image {
+  -fx-font-weight: bold;
+}
+
+.project-browser .tree-cell.no-saved-data {
+  -fx-font-style: italic;
+}
+
+.project-browser .tree-cell.missing-uri {
+  -fx-text-fill: -qp-script-warn-color;
+}
+
+.project-browser .project-thumbnail {
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 4, 0, 1, 1);
+}
+
+.project-browser .missing-uri {
+  -fx-text-fill: -qp-script-warn-color;
+  -fx-fill: -qp-script-warn-color;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 2, 0, 1, 1);
+}
+
+/* Title pane with small additional buttons */
+.titled-pane > .title .titled-button-pane .button {
+  -fx-padding: 1 8 1 8;
+}

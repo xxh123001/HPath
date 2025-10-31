@@ -1,0 +1,140 @@
+[versions]
+
+bioformats      = "8.2.0"
+bioimageIoSpec  = "0.2.0"
+omeZarrReader   = "0.6.0"
+blosc           = "1.21.6+01"
+
+commonmark      = "0.24.0"
+commonsMath3    = "3.6.1"
+commonsText     = "1.10.0"
+controlsFX      = "11.2.2"
+
+deepJavaLibrary = "0.33.0"
+
+groovy          = "4.0.26"
+gson            = "2.13.1"
+guava           = "33.4.8-jre"
+
+ikonli          = "12.3.1"
+imagej          = "1.54k"
+
+# Compatibility with Java 21 with QuPath v0.6.x
+jdk             = "21"
+
+# For gradle-javacpp-platform (no 1.5.11 available)
+javacpp         = "1.5.10"
+
+opencv          = "4.10.0-1.5.11"
+
+# Warning! JavaFX 20.0.1 and later seem to break search links in Javadocs
+javafx          = "23.0.2"
+jna             = "5.16.0"
+jfreeSvg        = "5.0.6"
+jfxtras         = "17-r1"
+jts             = "1.20.0"
+junit           = "5.11.0"
+
+logback         = "1.5.8"
+logviewer       = "0.2.0"
+
+extensionmanager= "1.0.0"
+
+javadocviewer   = "0.1.2"
+
+openslide       = "4.0.0.6"
+
+picocli         = "4.7.7"
+
+qupath-fxtras   = "0.2.0"
+qupath-training = "0.1.0"
+qupath-djl      = "0.4.0"
+
+richtextfx      = "0.11.5"
+
+slf4j           = "2.0.16"
+snakeyaml       = "2.3"
+
+
+[libraries]
+bioimageio-spec = { module = "io.github.qupath:qupath-bioimageio-spec", version.ref = "bioimageIoSpec" }
+
+commonmark    = { module = "org.commonmark:commonmark",         version.ref = "commonmark" }
+commonmark-yaml = { module = "org.commonmark:commonmark-ext-yaml-front-matter", version.ref = "commonmark" }
+commons-math  = { module = "org.apache.commons:commons-math3",  version.ref = "commonsMath3" }
+commons-text  = { module = "org.apache.commons:commons-text",   version.ref = "commonsText" }
+controlsfx    = { module = "org.controlsfx:controlsfx",         version.ref = "controlsFX" }
+
+deepJavaLibrary = { module = "ai.djl:api",                      version.ref = "deepJavaLibrary" }
+deepJavaLibrary-zoo = { module = "ai.djl:model-zoo",            version.ref = "deepJavaLibrary" }
+
+gson          = { module = "com.google.code.gson:gson",         version.ref = "gson" }
+guava         = { module = "com.google.guava:guava",            version.ref = "guava" }
+
+imagej        = { module = "net.imagej:ij",                     version.ref = "imagej" }
+
+jna           = { module = "net.java.dev.jna:jna",              version.ref = "jna" }
+jfreesvg      = { module = "org.jfree:org.jfree.svg",           version.ref = "jfreeSvg" }
+jfxtras       = { module = "org.jfxtras:jfxtras-menu",          version.ref = "jfxtras" }
+jts           = { module = "org.locationtech.jts:jts-core",     version.ref = "jts" }
+
+logback       = { module = "ch.qos.logback:logback-classic",    version.ref = "logback" }
+
+logviewer     = { module = "io.github.qupath:logviewer-ui-main",        version.ref = "logviewer" }
+logviewer-console = { module = "io.github.qupath:logviewer-ui-textarea",  version.ref = "logviewer" }
+logviewer-rich    = { module = "io.github.qupath:logviewer-ui-richtextfx",  version.ref = "logviewer" }
+logviewer-logback = { module = "io.github.qupath:logviewer-logging-logback",  version.ref = "logviewer" }
+
+javadocviewer = { module = "io.github.qupath:javadocviewer",    version.ref = "javadocviewer" }
+
+extensionmanager = { module = "io.github.qupath:extensionmanager",    version.ref = "extensionmanager" }
+
+omeZarrReader = { module = "ome:OMEZarrReader",                 version.ref = "omeZarrReader" }
+
+picocli       = { module = "info.picocli:picocli",              version.ref = "picocli" }
+
+qupath-fxtras = { module = "io.github.qupath:qupath-fxtras",    version.ref = "qupath-fxtras" }
+
+qupath-training = { module = "io.github.qupath:qupath-extension-training", version.ref = "qupath-training" }
+qupath-djl    = { module = "io.github.qupath:qupath-extension-djl", version.ref = "qupath-djl" }
+
+richtextfx    = { module = "org.fxmisc.richtext:richtextfx",    version.ref = "richtextfx" }
+
+slf4j         = { module = "org.slf4j:slf4j-api",               version.ref = "slf4j" }
+snakeyaml     = { module = "org.yaml:snakeyaml",                version.ref = "snakeyaml" }
+
+groovy-core   = { module = "org.apache.groovy:groovy",          version.ref = "groovy" }
+groovy-jsr223 = { module = "org.apache.groovy:groovy-jsr223",   version.ref = "groovy" }
+groovy-xml    = { module = "org.apache.groovy:groovy-xml",      version.ref = "groovy" }
+
+javacpp       = { module = "org.bytedeco:javacpp",              version.ref = "javacpp" }
+opencv        = { module = "org.bytedeco:opencv-platform",      version.ref = "opencv" }
+
+ikonli-javafx    = { module = "org.kordamp.ikonli:ikonli-javafx",         version.ref = "ikonli" }
+ikonli-ionicons4 = { module = "org.kordamp.ikonli:ikonli-ionicons4-pack", version.ref = "ikonli" }
+
+junit            = { module = "org.junit.jupiter:junit-jupiter",        version.ref = "junit" }
+junit-platform   = { module = "org.junit.platform:junit-platform-launcher" }
+
+
+[bundles]
+djl           = ["deepJavaLibrary", "deepJavaLibrary-zoo"]
+groovy        = ["groovy-core", "groovy-jsr223", "groovy-xml"]
+ikonli        = ["ikonli-javafx", "ikonli-ionicons4"]
+logging       = ["slf4j", "logback"]
+logviewer     = ["logviewer", "logviewer-console", "logviewer-rich", "logviewer-logback"]
+markdown      = ["commonmark", "commonmark-yaml"]
+opencv        = ["javacpp", "opencv"]
+yaml          = ["snakeyaml"]
+
+[plugins]
+# Use the javafx plugin to add modules
+javacpp        = { id = "org.bytedeco.gradle-javacpp-platform",     version.ref = "javacpp" }
+# If javafx plugin causes trouble, see https://github.com/openjfx/javafx-gradle-plugin#migrating-from-0014-to-010
+javafx         = { id = "org.openjfx.javafxplugin",                 version = "0.1.0" }
+# For jpackage
+jpackage       = { id = "org.beryx.runtime",                        version = "1.13.1" } # Non-modular
+# For license report (including 3rd party licenses)
+license-report = { id = "com.github.jk1.dependency-license-report", version = "2.9" }
+# For checksums when creating builds
+checksum       = { id = "org.gradle.crypto.checksum",               version = "1.4.0" }

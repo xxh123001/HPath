@@ -1,0 +1,46 @@
+module hpath.core {
+	
+    requires java.base;
+    requires java.desktop;
+    requires java.scripting;
+	
+    requires slf4j.api;
+    requires transitive org.locationtech.jts;
+    requires transitive com.google.gson;
+    requires commons.math3;
+    requires org.bytedeco.opencv;
+
+    exports hpath.lib.analysis;
+    exports hpath.lib.analysis.images;
+    exports hpath.lib.analysis.stats;
+    exports hpath.lib.analysis.stats.survival;
+    exports hpath.lib.awt.common;
+    exports hpath.lib.classifiers;
+    exports hpath.lib.classifiers.object;
+    exports hpath.lib.classifiers.pixel;
+    exports hpath.lib.color;
+    exports hpath.lib.common;
+    exports hpath.lib.geom;
+    exports hpath.lib.images;
+    exports hpath.lib.images.servers;
+    exports hpath.lib.images.writers;
+    exports hpath.lib.io;
+    exports hpath.lib.measurements;
+    exports hpath.lib.objects;
+    exports hpath.lib.objects.classes;
+    exports hpath.lib.objects.hierarchy;
+    exports hpath.lib.objects.hierarchy.events;
+    exports hpath.lib.plugins;
+    exports hpath.lib.plugins.parameters;
+    exports hpath.lib.plugins.workflow;
+    exports hpath.lib.projects;
+    exports hpath.lib.regions;
+    exports hpath.lib.roi;
+    exports hpath.lib.roi.interfaces;
+    
+    exports hpath.lib.gson to hpath.extension.experimental;
+    
+    uses hpath.lib.images.servers.ImageServerBuilder;
+    uses hpath.lib.images.writers.ImageWriter;
+
+}

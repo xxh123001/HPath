@@ -1,0 +1,156 @@
+/*
+ * Basic styles for richtextfx
+ */
+
+.code-area {
+	-fx-background-color: -qp-script-background-color;
+	-fx-text-fill: -qp-script-text-color;
+}
+
+.caret {
+    -fx-stroke: -qp-script-text-color;
+}
+
+.text {
+	-fx-fill: -qp-script-text-color;
+}
+
+.lineno {
+	-fx-background-color: -fx-background;
+}
+
+
+/*
+ * Logging styles
+ */
+
+.debug {
+    -fx-fill: -qp-script-debug-color;
+}
+.trace {
+    -fx-fill: -qp-script-trace-color;
+}
+.error {
+    -fx-fill: -qp-script-error-color;
+}
+.warn {
+    -fx-fill: -qp-script-warn-color;
+}
+.info {
+    -fx-fill: -qp-script-info-color;
+}
+
+
+/*
+ * Coding styles
+ */
+ 
+.keyword {
+    -fx-fill: -qp-script-keyword-color;
+	-fx-font-weight: bold;
+}
+.paren {
+    -fx-fill: -qp-script-paren-color;
+    -fx-font-weight: bold;
+}
+.bracket {
+    -fx-fill: -qp-script-bracket-color;
+    -fx-font-weight: bold;
+}
+.brace {
+    -fx-fill: -qp-script-brace-color;
+    -fx-font-weight: bold;
+}
+.string {
+    -fx-fill: -qp-script-string-color;
+}
+.number {
+    -fx-fill: -qp-script-number-color;
+}
+.comment {
+    -fx-fill: -qp-script-comment-color;
+}
+.semicolon {
+    -fx-fill: -qp-script-semicolon-color;
+    -fx-font-weight: bold;
+}
+
+
+/*
+ * Markdown styles
+ */
+.md {
+    -fx-fill: -qp-script-text-color;
+    -fx-font-family: sans-serif;
+}
+.md.h1 {
+    -fx-font-weight: bold;
+    -fx-font-size: 175%;
+}
+.md.h2 {
+    -fx-font-weight: bold;
+    -fx-font-size: 150%;
+}
+.md.h3 {
+    -fx-font-weight: bold;
+    -fx-font-size: 135%;
+}
+.md.h4 {
+    -fx-font-weight: bold;
+    -fx-font-size: 120%;
+}
+.md.h5 {
+    -fx-font-weight: bold;
+    -fx-font-size: 110%;
+}
+.md.h6 {
+    -fx-font-weight: bold;
+}
+.md.strong {
+    -fx-font-weight: bold;
+}
+.md.emph {
+    -fx-font-style: italic;
+}
+.md.list {
+    -fx-fill: -qp-script-tag-color;
+}
+.md.link {
+    -fx-fill: -qp-script-link-color;
+}
+.md.code {
+	-fx-font-family: monospace;
+}
+.md.quote {
+	-fx-fill: -qp-script-comment-color;
+}
+.md.image {
+	-fx-fill: -qp-script-attribute-color;
+}
+.md.raw {
+	-fx-font-family: monospace;
+	-fx-fill: -qp-script-error-color;
+}
+
+
+/*
+ * XML styles
+ */ 
+.xml.body {
+	-fx-fill: -qp-script-text-color;
+}
+.xml.attribute {
+	-fx-fill: -qp-script-attribute-color;
+}
+.xml.tagmark {
+	-fx-fill: -qp-script-text-color;
+}
+.xml.anytag {
+	-fx-fill: -qp-script-tag-color;
+}
+.xml.avalue {
+	-fx-fill: -qp-script-string-color;
+}
+.xml.comment {
+    -fx-fill: -qp-script-comment-color;
+}

@@ -1,0 +1,37 @@
+module hpath.core.processing {
+	
+    requires java.base;
+    requires java.desktop;
+    
+    requires transitive hpath.core;
+
+    requires slf4j.api;
+    requires transitive ij;
+    requires transitive org.bytedeco.opencv;
+    
+    exports hpath.imagej.detect.cells;
+    exports hpath.imagej.detect.dearray;
+    exports hpath.imagej.detect.tissue;
+    exports hpath.imagej.images.servers;
+    exports hpath.imagej.images.writers;
+    exports hpath.imagej.processing;
+    exports hpath.imagej.superpixels;
+    exports hpath.imagej.tools;
+    exports hpath.lib.algorithms;
+    exports hpath.lib.analysis.algorithms;
+    exports hpath.lib.analysis.features;
+    exports hpath.lib.plugins.objects;
+    exports hpath.lib.scripting;
+    exports hpath.opencv;
+    exports hpath.opencv.classify;
+    exports hpath.opencv.features;
+    exports hpath.opencv.tools;
+    
+    provides hpath.lib.images.writers.ImageWriter with
+    	hpath.imagej.images.writers.TiffWriterIJ,
+    	hpath.imagej.images.writers.ZipWriterIJ;
+    
+    provides hpath.lib.images.servers.ImageServerBuilder with
+    	hpath.imagej.images.servers.ImageJServerBuilder;
+
+}

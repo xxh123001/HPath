@@ -1,0 +1,16 @@
+module hpath.extension.scripteditor {
+	
+    requires javafx.controls;
+
+    requires hpath.gui.fx;
+
+    requires org.fxmisc.richtext;
+    requires slf4j.api;
+	requires flowless;
+	requires hpath.core.processing;
+	requires hpath.core;
+
+	provides hpath.lib.gui.extensions.QuPathExtension with
+		hpath.lib.gui.scripting.richtextfx.RichScriptEditorExtension;
+	
+}
