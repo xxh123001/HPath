@@ -1,0 +1,17 @@
+{
+  "name": "Sample Polygon",
+  "type": "annotation",
+  "color": "red",
+  "points": [
+    {"x": 100, "y": 100},
+    {"x": 200, "y": 100},
+    {"x": 200, "y": 200},
+    {"x": 100, "y": 200},
+    {"x": 100, "y": 100}
+  ],
+  "properties": {
+    "label": "Test Region",
+    "area": "10000"
+  }
+}
+

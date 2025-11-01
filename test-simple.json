@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [100, 100],
+            [200, 100],
+            [200, 200],
+            [100, 200],
+            [100, 100]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Test Square",
+        "objectType": "annotation"
+      }
+    }
+  ]
+}
+

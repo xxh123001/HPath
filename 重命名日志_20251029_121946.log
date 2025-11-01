@@ -1,0 +1,1793 @@
+[0;34m================================[0m
+[0;34m批量重命名脚本 v2.0 - 开始执行[0m
+[0;34m================================[0m
+源目录: /Users/felix/Desktop/光密度/2025年10月29日/kt_merged_split
+日志文件: /Users/felix/Downloads/HPath-main/重命名日志_20251029_121946.log
+执行模式: --execute
+
+[1;33m⚠️  实际执行模式 - 将修改文件名[0m
+
+
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0384[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0384_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0384_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0384_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0384_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0384_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0384_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0384_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0384_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0384_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0384_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0594[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0594_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0594_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0594_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0594_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0594_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0594_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0594_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0594_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0594_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0594_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0699[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0699_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0699_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0699_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0699_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0699_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0699_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0699_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0699_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0699_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0699_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0728[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0728_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0728_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0728_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0728_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0728_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0728_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0728_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0728_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0728_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0728_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0766[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0766_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0766_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0766_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0766_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0766_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0766_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0766_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0766_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0766_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0766_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0850[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0850_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0850_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0850_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0850_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0850_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0850_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0850_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0850_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0850_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0850_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0875[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0875_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0875_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0875_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0875_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0875_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0875_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0875_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0875_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0875_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0875_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-0968[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-0968_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-0968_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-0968_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-0968_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-0968_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-0968_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-0968_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-0968_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-0968_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-0968_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1036[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1036_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1036_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1036_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1036_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1036_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1036_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1036_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1036_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1036_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1036_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1085[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1085_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1085_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1085_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1085_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1085_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1085_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1085_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1085_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1085_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1085_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1088[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1088_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1088_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1088_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1088_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1088_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1088_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1088_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1088_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1088_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1088_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1098[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1098_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1098_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1098_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1098_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1098_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1098_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1098_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1098_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1098_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1098_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1153[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1153_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1153_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1153_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1153_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1153_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1153_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1153_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1153_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1153_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1153_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1279[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1279_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1279_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1279_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1279_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1279_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1279_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1279_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1279_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1279_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1279_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1295[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1295_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1295_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1295_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1295_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1295_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1295_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1295_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1295_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1295_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1295_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1296[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1296_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1296_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1296_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1296_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1296_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1296_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1296_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1296_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1296_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1296_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1356[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1356_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1356_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1356_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1356_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1356_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1356_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1356_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1356_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1356_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1356_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1394[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1394_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1394_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1394_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1394_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1394_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1394_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1394_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1394_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1394_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1394_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1395[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1395_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1395_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1395_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1395_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1395_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1395_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1395_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1395_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1395_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1395_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1466[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1466_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1466_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1466_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1466_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1466_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1466_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1466_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1466_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1466_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1466_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1525[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1525_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1525_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1525_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1525_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1525_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1525_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1525_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1525_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1525_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1525_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1587[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1587_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1587_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1587_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1587_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1587_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1587_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1587_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1587_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1587_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1587_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1588[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1588_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1588_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1588_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1588_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1588_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1588_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1588_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1588_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1588_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1588_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1592[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1592_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1592_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1592_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1592_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1592_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1592_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1592_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1592_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1592_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1592_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1637[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1637_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1637_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1637_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1637_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1637_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1637_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1637_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1637_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1637_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1637_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1664[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1664_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1664_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1664_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1664_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1664_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1664_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1664_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1664_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1664_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1664_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1704[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1704_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1704_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1704_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1704_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1704_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1704_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1704_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1704_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1704_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1704_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1773[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1773_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1773_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1773_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1773_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1773_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1773_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1773_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1773_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1773_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1773_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1783[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1783_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1783_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1783_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1783_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1783_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1783_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1783_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1783_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1783_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1783_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1824[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1824_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1824_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1824_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1824_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1824_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1824_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1824_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1824_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1824_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1824_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1936[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1936_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1936_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1936_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1936_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1936_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1936_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1936_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1936_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1936_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1936_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1978[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1978_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1978_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1978_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1978_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1978_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1978_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1978_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1978_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1978_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1978_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-1992[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-1992_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-1992_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-1992_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-1992_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-1992_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-1992_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-1992_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-1992_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-1992_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-1992_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2033[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2033_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2033_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2033_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2033_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2033_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2033_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2033_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2033_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2033_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2033_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2087[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2087_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2087_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2087_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2087_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2087_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2087_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2087_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2087_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2087_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2087_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2300[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2300_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2300_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2300_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2300_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2300_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2300_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2300_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2300_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2300_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2300_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2411[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2411_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2411_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2411_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2411_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2411_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2411_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2411_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2411_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2411_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2411_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2494[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2494_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2494_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2494_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2494_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2494_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2494_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2494_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2494_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2494_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2494_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2556[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2556_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2556_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2556_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2556_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2556_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2556_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2556_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2556_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2556_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2556_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2609[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2609_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2609_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2609_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2609_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2609_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2609_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2609_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2609_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2609_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2609_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2687[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2687_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2687_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2687_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2687_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2687_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2687_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2687_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2687_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2687_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2687_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2695[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2695_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2695_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2695_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2695_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2695_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2695_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2695_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2695_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2695_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2695_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2708[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2708_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2708_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2708_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2708_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2708_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2708_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2708_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2708_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2708_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2708_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2789[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2789_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2789_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2789_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2789_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2789_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2789_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2789_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2789_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2789_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2789_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2794[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2794_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2794_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2794_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2794_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2794_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2794_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2794_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2794_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2794_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2794_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-2986[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-2986_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-2986_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-2986_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-2986_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-2986_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-2986_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-2986_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-2986_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-2986_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-2986_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3045[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3045_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3045_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3045_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3045_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3045_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3045_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3045_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3045_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3045_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3045_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3190[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3190_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3190_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3190_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3190_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3190_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3190_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3190_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3190_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3190_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3190_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3379[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3379_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3379_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3379_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3379_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3379_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3379_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3379_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3379_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3379_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3379_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3383[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3383_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3383_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3383_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3383_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3383_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3383_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3383_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3383_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3383_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3383_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3414[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3414_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3414_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3414_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3414_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3414_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3414_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3414_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3414_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3414_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3414_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3446[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3446_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3446_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3446_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3446_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3446_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3446_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3446_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3446_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3446_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3446_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3655[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3655_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3655_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3655_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3655_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3655_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3655_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3655_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3655_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3655_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3655_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3716[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3716_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3716_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3716_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3716_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3716_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3716_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3716_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3716_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3716_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3716_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3843[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3843_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3843_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3843_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3843_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3843_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3843_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3843_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3843_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3843_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3843_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3932[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3932_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3932_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3932_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3932_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3932_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3932_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3932_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3932_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3932_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3932_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-3981[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-3981_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-3981_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-3981_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-3981_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-3981_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-3981_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-3981_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-3981_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-3981_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-3981_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4015[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4015_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4015_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4015_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4015_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4015_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4015_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4015_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4015_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4015_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4015_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4063[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4063_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4063_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4063_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4063_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4063_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4063_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4063_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4063_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4063_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4063_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4111[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4111_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4111_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4111_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4111_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4111_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4111_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4111_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4111_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4111_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4111_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4129[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4129_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4129_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4129_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4129_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4129_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4129_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4129_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4129_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4129_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4129_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4386[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4386_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4386_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4386_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4386_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4386_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4386_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4386_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4386_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4386_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4386_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4400[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4400_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4400_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4400_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4400_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4400_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4400_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4400_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4400_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4400_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4400_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4466[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4466_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4466_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4466_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4466_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4466_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4466_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4466_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4466_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4466_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4466_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4492[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4492_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4492_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4492_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4492_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4492_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4492_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4492_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4492_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4492_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4492_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4538[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4538_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4538_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4538_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4538_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4538_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4538_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4538_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4538_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4538_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4538_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4606[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4606_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4606_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4606_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4606_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4606_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4606_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4606_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4606_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4606_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4606_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m处理项目: K2024-4674[0m
+[0;34m================================[0m
+  [0;32m✓[0m kt.json
+    → K2024-4674_kt.json
+  [0;32m✓[0m light.svs
+    → K2024-4674_PAS.svs
+  [0;32m✓[0m qp1_480_all.svs
+    → K2024-4674_UMOD.svs
+  [0;32m✓[0m qp1_520_yuan.svs
+    → K2024-4674_LRP2.svs
+  [0;32m✓[0m qp1_620_jin.svs
+    → K2024-4674_AQP1.svs
+  [0;32m✓[0m qp1_690_shengzhi.svs
+    → K2024-4674_PanCK.svs
+  [0;32m✓[0m qp2_480_xueguan.svs
+    → K2024-4674_CD31.svs
+  [0;32m✓[0m qp2_570_jihe.svs
+    → K2024-4674_AQP2.svs
+  [0;32m✓[0m qp2_620_shengzhi.svs
+    → K2024-4674_SLC8A1.svs
+  [0;32m✓[0m qp2_690_jin.svs
+    → K2024-4674_PNA.svs
+
+  项目统计: 发现 10 个文件, 重命名 10 个
+
+[0;34m================================[0m
+[0;34m执行完成 - 总体统计[0m
+[0;34m================================[0m
+处理项目数: [0;34m68[0m
+发现文件数: [0;34m680[0m
+重命名文件: [0;32m680[0m
+跳过文件数: [1;33m0[0m
+错误文件数: [0;31m0[0m
+
+[0;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
+[0;32m✓ 重命名操作已完成！[0m
+[0;32m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m
+
+详细日志已保存到: /Users/felix/Downloads/HPath-main/重命名日志_20251029_121946.log
