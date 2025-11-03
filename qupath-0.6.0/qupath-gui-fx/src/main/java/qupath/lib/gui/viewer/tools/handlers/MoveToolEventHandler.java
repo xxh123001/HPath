@@ -63,7 +63,20 @@ public class MoveToolEventHandler extends AbstractPathToolEventHandler {
 
 	private static boolean requestDynamicDragging = true;
 	
+	// Multi-selection mode: when enabled, acts like Ctrl is always pressed for clicking
+	private static javafx.beans.property.BooleanProperty multiSelectionMode = new javafx.beans.property.SimpleBooleanProperty(false);
+	
+	/**
+	 * Get the multi-selection mode property.
+	 * When enabled, clicking objects adds them to selection without needing to hold Ctrl.
+	 * @return the multi-selection mode property
+	 */
+	public static javafx.beans.property.BooleanProperty multiSelectionModeProperty() {
+		return multiSelectionMode;
+	}
+	
 	private Point2D pDragging;
+	private Point2D pPressedForMultiSelect; // Track press location to detect if user is dragging
 	private double dx, dy; // Last dragging displacements
 	private long lastDragTimestamp; // Used to determine if the user has stopped dragging (but may not yet have release the mouse button)
 	
@@ -93,10 +106,24 @@ public class MoveToolEventHandler extends AbstractPathToolEventHandler {
 			boolean selected = false;
 			if (e.isAltDown() || e.isShortcutDown())
 				selected = ToolUtils.tryToSelect(viewer, xx, yy, e.getClickCount()-1, true, true);
-			else
+			else {
+				// In multi-select mode, double-click empty area clears selection
+				if (multiSelectionMode.get() && e.getClickCount() == 2) {
+					var selectableObjects = ToolUtils.getSelectableObjectList(viewer, xx, yy);
+					if (selectableObjects.isEmpty()) {
+						// Double-clicked empty area - clear selection
+						viewer.getHierarchy().getSelectionModel().clearSelection();
+						selected = true; // Mark as handled
+					} else {
+						selected = ToolUtils.tryToSelect(viewer, xx, yy, e.getClickCount()-2, false);
+					}
+				} else {
 				selected = ToolUtils.tryToSelect(viewer, xx, yy, e.getClickCount()-2, false);
+				}
+			}
 			e.consume();
 			pDragging = null;
+			pPressedForMultiSelect = null;
 			if (!selected && PathPrefs.doubleClickToZoomProperty().get()) {
 				double downsample = viewer.getDownsampleFactor();
 				if (e.isAltDown() || e.isShortcutDown())
@@ -106,6 +133,15 @@ public class MoveToolEventHandler extends AbstractPathToolEventHandler {
 				viewer.setDownsampleFactor(downsample, e.getX(), e.getY());
 			}
 			return;
+		}
+		
+		// For multi-selection mode, record press position but don't select yet
+		// (wait for release to ensure it's a click, not a drag)
+		if (multiSelectionMode.get() && e.getClickCount() == 1) {
+			pPressedForMultiSelect = new Point2D.Double(xx, yy);
+			logger.debug("Multi-select mode active, recorded press at ({}, {})", xx, yy);
+		} else {
+			pPressedForMultiSelect = null;
 		}
 		
 		if (!viewer.isSpaceDown() && viewer.getHierarchy() != null) {
@@ -136,6 +172,7 @@ public class MoveToolEventHandler extends AbstractPathToolEventHandler {
 				}
 				if (e.isConsumed()) {
 					pDragging = null;
+					pPressedForMultiSelect = null;
 					return;
 				}
 			}
@@ -158,6 +195,9 @@ public class MoveToolEventHandler extends AbstractPathToolEventHandler {
 			mover.stopMoving();
 		
 		super.mouseDragged(e);
+		
+		// Clear multi-select tracking when dragging starts
+		pPressedForMultiSelect = null;
 		
 		if (!e.isPrimaryButtonDown() || e.isConsumed())
             return;
@@ -287,6 +327,49 @@ public class MoveToolEventHandler extends AbstractPathToolEventHandler {
 		}
 		
 		
+		// Handle multi-selection mode (only if no dragging occurred)
+		if (pPressedForMultiSelect != null && !e.isConsumed()) {
+			Point2D pReleased = mouseLocationToImage(e, false, false);
+			double distance = pPressedForMultiSelect.distance(pReleased);
+			// If mouse didn't move much (less than 5 pixels), treat as a click
+			if (distance < 5.0 * viewer.getDownsampleFactor()) {
+				logger.debug("Multi-select mode: selecting at ({}, {})", pReleased.getX(), pReleased.getY());
+				// Check if there's an object at this location
+				var selectableObjects = ToolUtils.getSelectableObjectList(viewer, pReleased.getX(), pReleased.getY());
+				if (!selectableObjects.isEmpty()) {
+					PathObject clickedObject = selectableObjects.get(0);
+					var selectionModel = viewer.getHierarchy().getSelectionModel();
+					var currentSelected = new java.util.ArrayList<>(selectionModel.getSelectedObjects());
+					
+					// Toggle: if already selected, remove it; if not selected, add it
+					if (currentSelected.contains(clickedObject)) {
+						// Already selected - remove it (deselect)
+						currentSelected.remove(clickedObject);
+						logger.debug("Multi-select: deselected object");
+					} else {
+						// Not selected - add it
+						currentSelected.add(clickedObject);
+						logger.debug("Multi-select: added object to selection");
+					}
+					
+					// Update selection
+					if (currentSelected.isEmpty()) {
+						selectionModel.clearSelection();
+					} else {
+						selectionModel.setSelectedObjects(currentSelected, currentSelected.get(currentSelected.size() - 1));
+					}
+					e.consume();
+				} else {
+					// Clicked on empty area - don't clear selection (preserve it)
+					logger.debug("Multi-select: clicked empty area, preserving selection");
+					e.consume();
+				}
+			} else {
+				logger.debug("Multi-select skipped: dragged {} pixels", distance);
+			}
+			pPressedForMultiSelect = null;
+		}
+		
 		// Optionally continue a dragging movement until the canvas comes to a standstill
 		if (pDragging != null && requestDynamicDragging && System.currentTimeMillis() - lastDragTimestamp < 100 && (dx*dx + dy*dy > viewer.getDownsampleFactor())) {
 			mover = new ViewerMover(viewer);
@@ -313,6 +396,34 @@ public class MoveToolEventHandler extends AbstractPathToolEventHandler {
 		Cursor cursorType = viewer.getCursor();
 		if (cursorType == Cursor.WAIT)
 			return;
+		
+		// Shift+hover to auto-select annotations (multi-select mode)
+		if (e.isShiftDown() && !e.isControlDown() && viewer.getHierarchy() != null) {
+			Point2D p2 = mouseLocationToImage(e, true, false);
+			double xx = p2.getX();
+			double yy = p2.getY();
+			
+			// Find object under mouse
+			var selectableObjects = ToolUtils.getSelectableObjectList(viewer, xx, yy);
+			if (!selectableObjects.isEmpty()) {
+				PathObject objectUnderMouse = selectableObjects.get(0);
+				
+				// Only auto-select annotations (not detections)
+				if (objectUnderMouse instanceof PathAnnotationObject) {
+					var selectionModel = viewer.getHierarchy().getSelectionModel();
+					var currentSelected = selectionModel.getSelectedObjects();
+					
+					// Add to selection if not already selected
+					if (!currentSelected.contains(objectUnderMouse)) {
+						var newSelection = new java.util.ArrayList<>(currentSelected);
+						newSelection.add(objectUnderMouse);
+						selectionModel.setSelectedObjects(newSelection, objectUnderMouse);
+					}
+				}
+				ensureCursorType(Cursor.CROSSHAIR);
+				return;
+			}
+		}
 		
 		// If we are already translating, we must need a move cursor
 		if (viewer.getROIEditor().isTranslating()) {

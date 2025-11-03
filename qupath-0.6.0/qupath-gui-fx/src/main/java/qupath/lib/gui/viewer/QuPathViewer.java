@@ -334,6 +334,32 @@ public class QuPathViewer implements TileListener<BufferedImage>, PathObjectHier
 		pane.setAlignment(Pos.CENTER);
 		var placeholder = createPlaceholder();
 		pane.getChildren().add(placeholder);
+		
+		// Add multi-selection mode toggle button
+		javafx.scene.control.ToggleButton multiSelectBtn = new javafx.scene.control.ToggleButton("Multi-Select: OFF");
+		multiSelectBtn.setStyle("-fx-font-size: 12px; -fx-padding: 8 15 8 15; -fx-background-color: rgba(240, 240, 240, 0.9); -fx-cursor: hand;");
+		multiSelectBtn.setTooltip(new Tooltip("Toggle multi-selection mode (click multiple objects without holding Ctrl)\nShortcut: M key"));
+		multiSelectBtn.selectedProperty().bindBidirectional(MoveToolEventHandler.multiSelectionModeProperty());
+		
+		// Make sure button is interactive
+		multiSelectBtn.setFocusTraversable(false);
+		
+		// Update button text and style based on state
+		multiSelectBtn.selectedProperty().addListener((obs, oldVal, newVal) -> {
+			if (newVal) {
+				multiSelectBtn.setText("Multi-Select: ON");
+				multiSelectBtn.setStyle("-fx-font-size: 12px; -fx-padding: 8 15 8 15; -fx-background-color: rgba(100, 200, 100, 0.9); -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;");
+			} else {
+				multiSelectBtn.setText("Multi-Select: OFF");
+				multiSelectBtn.setStyle("-fx-font-size: 12px; -fx-padding: 8 15 8 15; -fx-background-color: rgba(240, 240, 240, 0.9); -fx-cursor: hand;");
+			}
+		});
+		
+		// Position button at top-left corner using StackPane's alignment
+		javafx.scene.layout.StackPane.setAlignment(multiSelectBtn, Pos.TOP_LEFT);
+		javafx.scene.layout.StackPane.setMargin(multiSelectBtn, new Insets(10));
+		// Add button LAST so it's on top of everything
+		pane.getChildren().add(multiSelectBtn);
 
 		// Resize to anything
 		pane.setMinWidth(1);
@@ -341,7 +367,13 @@ public class QuPathViewer implements TileListener<BufferedImage>, PathObjectHier
 		pane.setMaxWidth(Double.MAX_VALUE);
 		pane.setMaxHeight(Double.MAX_VALUE);
 		
+		// Add event filters - but exclude the button area
 		pane.addEventFilter(MouseEvent.ANY, e -> {
+			// Allow button to receive its events
+			if (e.getTarget() == multiSelectBtn) {
+				return;
+			}
+			
 			mouseX = e.getX();
 			mouseY = e.getY();
 			
@@ -349,7 +381,22 @@ public class QuPathViewer implements TileListener<BufferedImage>, PathObjectHier
 				updateTooltip(tooltip);
 		});
 		
-		pane.addEventFilter(KeyEvent.ANY, new KeyEventFilter());
+		// Add keyboard shortcut for multi-select mode: M key
+		KeyEventFilter keyFilter = new KeyEventFilter();
+		pane.addEventFilter(KeyEvent.ANY, e -> {
+			// Toggle multi-select mode with 'M' key
+			if (e.getEventType() == KeyEvent.KEY_PRESSED && 
+			    e.getCode() == KeyCode.M && 
+			    !e.isControlDown() && 
+			    !e.isShiftDown() && 
+			    !e.isAltDown()) {
+				MoveToolEventHandler.multiSelectionModeProperty().set(!MoveToolEventHandler.multiSelectionModeProperty().get());
+				e.consume();
+				return;
+			}
+			keyFilter.handle(e);
+		});
+		
 		pane.addEventHandler(KeyEvent.ANY, new KeyEventHandler());
 
 	}

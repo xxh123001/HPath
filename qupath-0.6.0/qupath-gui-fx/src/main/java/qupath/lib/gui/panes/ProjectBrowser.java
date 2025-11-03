@@ -854,6 +854,16 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 	private BorderPane createEnhancedProjectPanel(MasterDetailPane mdTree) {
 		BorderPane enhancedPanel = new BorderPane();
 		
+		// Mode toggle button
+		ToggleButton modeToggleBtn = new ToggleButton("Simple Mode");
+		modeToggleBtn.setStyle("-fx-font-size: 12px;");
+		modeToggleBtn.setTooltip(new Tooltip("Toggle between Simple (images only) and All (full layout) modes"));
+		
+		HBox modeBox = new HBox(10);
+		modeBox.setPadding(new Insets(5));
+		modeBox.getChildren().add(modeToggleBtn);
+		enhancedPanel.setTop(modeBox);
+		
 		// Upper section: Image list (left) + Object import (right) with resizable divider
 		javafx.scene.control.SplitPane topSection = new javafx.scene.control.SplitPane();
 		
@@ -861,8 +871,11 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 		VBox imagePanel = new VBox(10);
 		imagePanel.setStyle("-fx-border-color: #c0c0c0; -fx-border-width: 1; -fx-padding: 10; -fx-background-color: #fafafa;");
 		
-		// Image label with selection count
-		Label imageLabel = new Label("📷 Images");
+		// Image label with selection count and collapse button
+		Button imageCollapseBtn = new Button("▼");
+		imageCollapseBtn.setStyle("-fx-font-size: 12px; -fx-padding: 2 8 2 8;");
+		
+		Label imageLabel = new Label("Images");
 		imageLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 		
 		Label imageSelectionLabel = new Label("Selected: 0 (click to select in order)");
@@ -880,7 +893,8 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 		});
 		clearImageSelectionBtn.setMaxWidth(Double.MAX_VALUE);
 		
-		HBox imageLabelBox = new HBox(10, imageLabel, imageSelectionLabel);
+		HBox imageLabelBox = new HBox(5, imageCollapseBtn, imageLabel, imageSelectionLabel);
+		imageLabelBox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
 		VBox imageHeaderBox = new VBox(5, imageLabelBox, clearImageSelectionBtn);
 		
 		// Add Import Images button (supports multiple selection)
@@ -953,8 +967,41 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 			event.consume();
 		});
 		
-		imagePanel.getChildren().addAll(imageHeaderBox, importImageBtn, batchImportBtn, mdTree);
+		// Wrap content in collapsible container
+		VBox imageContentBox = new VBox(10);
+		imageContentBox.getChildren().addAll(importImageBtn, batchImportBtn, mdTree);
 		VBox.setVgrow(mdTree, javafx.scene.layout.Priority.ALWAYS);
+		
+		// Create minimized placeholder
+		Button imageExpandBtn = new Button("▶ Images");
+		imageExpandBtn.setMaxWidth(Double.MAX_VALUE);
+		imageExpandBtn.setStyle("-fx-font-size: 12px; -fx-padding: 5;");
+		VBox imagePlaceholder = new VBox(imageExpandBtn);
+		imagePlaceholder.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
+		imagePlaceholder.setVisible(false);
+		imagePlaceholder.setManaged(false);
+		
+		// Collapse button functionality - hide panel and show placeholder
+		imageCollapseBtn.setOnAction(e -> {
+			imagePanel.setVisible(false);
+			imagePanel.setManaged(false);
+			imagePlaceholder.setVisible(true);
+			imagePlaceholder.setManaged(true);
+		});
+		
+		// Expand button functionality - show panel and hide placeholder
+		imageExpandBtn.setOnAction(e -> {
+			imagePanel.setVisible(true);
+			imagePanel.setManaged(true);
+			imagePlaceholder.setVisible(false);
+			imagePlaceholder.setManaged(false);
+		});
+		
+		imagePanel.getChildren().addAll(imageHeaderBox, imageContentBox);
+		
+		// Wrap imagePanel and placeholder in a container
+		javafx.scene.layout.StackPane imageContainer = new javafx.scene.layout.StackPane();
+		imageContainer.getChildren().addAll(imagePanel, imagePlaceholder);
 		
 		// Note: tree.setOnMouseClicked is already set in constructor for double-click to open
 		// Don't override it here - the ordered selection will use Ctrl+Click separately
@@ -963,8 +1010,11 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 		VBox objectPanel = new VBox(10);
 		objectPanel.setStyle("-fx-border-color: #c0c0c0; -fx-border-width: 1; -fx-padding: 10; -fx-background-color: #fafafa;");
 		
-		// Object label with selection count
-		Label objectLabel = new Label("📝 Objects (JSON/GeoJSON)");
+		// Object label with selection count and collapse button
+		Button objectCollapseBtn = new Button("▼");
+		objectCollapseBtn.setStyle("-fx-font-size: 12px; -fx-padding: 2 8 2 8;");
+		
+		Label objectLabel = new Label("Objects (JSON/GeoJSON)");
 		objectLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 		
 		Label objectSelectionLabel = new Label("Selected: 0 (Ctrl+Click: order | Shift: range)");
@@ -981,7 +1031,8 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 		});
 		clearObjectSelectionBtn.setMaxWidth(Double.MAX_VALUE);
 		
-		HBox objectLabelBox = new HBox(10, objectLabel, objectSelectionLabel);
+		HBox objectLabelBox = new HBox(5, objectCollapseBtn, objectLabel, objectSelectionLabel);
+		objectLabelBox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
 		VBox objectHeaderBox = new VBox(5, objectLabelBox, clearObjectSelectionBtn);
 		
 		// Import Objects button (supports multiple selection)
@@ -1172,11 +1223,44 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 			event.consume();
 		});
 		
-		objectPanel.getChildren().addAll(objectHeaderBox, importObjectBtn, objectTreeView);
+		// Wrap content in collapsible container
+		VBox objectContentBox = new VBox(10);
+		objectContentBox.getChildren().addAll(importObjectBtn, objectTreeView);
 		VBox.setVgrow(objectTreeView, javafx.scene.layout.Priority.ALWAYS);
 		
-		// Add panels to SplitPane with resizable divider
-		topSection.getItems().addAll(imagePanel, objectPanel);
+		// Create minimized placeholder
+		Button objectExpandBtn = new Button("▶ Objects");
+		objectExpandBtn.setMaxWidth(Double.MAX_VALUE);
+		objectExpandBtn.setStyle("-fx-font-size: 12px; -fx-padding: 5;");
+		VBox objectPlaceholder = new VBox(objectExpandBtn);
+		objectPlaceholder.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
+		objectPlaceholder.setVisible(false);
+		objectPlaceholder.setManaged(false);
+		
+		// Collapse button functionality
+		objectCollapseBtn.setOnAction(e -> {
+			objectPanel.setVisible(false);
+			objectPanel.setManaged(false);
+			objectPlaceholder.setVisible(true);
+			objectPlaceholder.setManaged(true);
+		});
+		
+		// Expand button functionality
+		objectExpandBtn.setOnAction(e -> {
+			objectPanel.setVisible(true);
+			objectPanel.setManaged(true);
+			objectPlaceholder.setVisible(false);
+			objectPlaceholder.setManaged(false);
+		});
+		
+		objectPanel.getChildren().addAll(objectHeaderBox, objectContentBox);
+		
+		// Wrap objectPanel and placeholder in a container
+		javafx.scene.layout.StackPane objectContainer = new javafx.scene.layout.StackPane();
+		objectContainer.getChildren().addAll(objectPanel, objectPlaceholder);
+		
+		// Add containers to SplitPane with resizable divider
+		topSection.getItems().addAll(imageContainer, objectContainer);
 		// Set initial divider position to 50-50 split
 		topSection.setDividerPositions(0.5);
 		// Style for the divider - lighter color
@@ -1201,8 +1285,16 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 		// Lower section: Merged results
 		VBox bottomSection = new VBox(10);
 		bottomSection.setStyle("-fx-border-color: #c0c0c0; -fx-border-width: 1; -fx-padding: 10; -fx-background-color: #fafafa;");
-		Label mergedLabel = new Label("📊 Merged Results (Double-click to open)");
+		
+		// Merged label with collapse button
+		Button mergedCollapseBtn = new Button("▼");
+		mergedCollapseBtn.setStyle("-fx-font-size: 12px; -fx-padding: 2 8 2 8;");
+		
+		Label mergedLabel = new Label("Merged Results (Double-click to open)");
 		mergedLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+		
+		HBox mergedLabelBox = new HBox(5, mergedCollapseBtn, mergedLabel);
+		mergedLabelBox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
 		
 		mergedResultListView = new ListView<>(mergedResultList);
 		mergedResultListView.setPlaceholder(new Label("No merged items yet.\nSelect image and check objects, then click Merge."));
@@ -1258,8 +1350,41 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 		
 		HBox mergedBtnBox = new HBox(5, openMergedBtn, removeMergedBtn, clearMergedBtn);
 		
-		bottomSection.getChildren().addAll(mergedLabel, mergedResultListView, mergedBtnBox);
+		// Wrap content in collapsible container
+		VBox mergedContentBox = new VBox(10);
+		mergedContentBox.getChildren().addAll(mergedResultListView, mergedBtnBox);
 		VBox.setVgrow(mergedResultListView, javafx.scene.layout.Priority.ALWAYS);
+		
+		// Create minimized placeholder
+		Button mergedExpandBtn = new Button("▶ Merged Results");
+		mergedExpandBtn.setMaxWidth(Double.MAX_VALUE);
+		mergedExpandBtn.setStyle("-fx-font-size: 12px; -fx-padding: 5;");
+		VBox mergedPlaceholder = new VBox(mergedExpandBtn);
+		mergedPlaceholder.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
+		mergedPlaceholder.setVisible(false);
+		mergedPlaceholder.setManaged(false);
+		
+		// Collapse button functionality
+		mergedCollapseBtn.setOnAction(e -> {
+			bottomSection.setVisible(false);
+			bottomSection.setManaged(false);
+			mergedPlaceholder.setVisible(true);
+			mergedPlaceholder.setManaged(true);
+		});
+		
+		// Expand button functionality
+		mergedExpandBtn.setOnAction(e -> {
+			bottomSection.setVisible(true);
+			bottomSection.setManaged(true);
+			mergedPlaceholder.setVisible(false);
+			mergedPlaceholder.setManaged(false);
+		});
+		
+		bottomSection.getChildren().addAll(mergedLabelBox, mergedContentBox);
+		
+		// Wrap bottomSection and placeholder in a container
+		javafx.scene.layout.StackPane mergedContainer = new javafx.scene.layout.StackPane();
+		mergedContainer.getChildren().addAll(bottomSection, mergedPlaceholder);
 		
 		// Combine top section with merge button
 		VBox topWithMerge = new VBox(10, topSection, mergeBox);
@@ -1268,11 +1393,30 @@ public class ProjectBrowser implements ChangeListener<ImageData<BufferedImage>> 
 		// Use vertical SplitPane to make top/bottom resizable
 		javafx.scene.control.SplitPane verticalSplit = new javafx.scene.control.SplitPane();
 		verticalSplit.setOrientation(javafx.geometry.Orientation.VERTICAL);
-		verticalSplit.getItems().addAll(topWithMerge, bottomSection);
+		verticalSplit.getItems().addAll(topWithMerge, mergedContainer);
 		// Set initial split: 60% top, 40% bottom
 		verticalSplit.setDividerPositions(0.6);
 		
+		// Simple mode view - just the image tree
+		BorderPane simpleView = new BorderPane();
+		simpleView.setCenter(mdTree);
+		simpleView.setPadding(new Insets(10));
+		
+		// Default to All mode (full layout)
 		enhancedPanel.setCenter(verticalSplit);
+		
+		// Mode toggle logic
+		modeToggleBtn.selectedProperty().addListener((obs, oldVal, newVal) -> {
+			if (newVal) {
+				// Simple mode - only show image tree
+				enhancedPanel.setCenter(simpleView);
+				modeToggleBtn.setText("All Mode");
+			} else {
+				// All mode - show full layout
+				enhancedPanel.setCenter(verticalSplit);
+				modeToggleBtn.setText("Simple Mode");
+			}
+		});
 		
 		return enhancedPanel;
 	}

@@ -92,9 +92,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -136,6 +138,9 @@ public class BrightnessContrastChannelPane extends BorderPane {
 
     private ObservableList<ChannelDisplayInfo> channelList = FXCollections.observableArrayList();
     private FilteredList<ChannelDisplayInfo> filteredChannels = new FilteredList<>(channelList);
+    
+    // Map to track RGB channel groups: representative channel -> list of all channels in the group
+    private final Map<ChannelDisplayInfo, List<ChannelDisplayInfo>> rgbChannelGroups = new HashMap<>();
 
     public BrightnessContrastChannelPane() {
         imageDisplayProperty().addListener(this::handleImageDisplayChanged);
@@ -224,7 +229,16 @@ public class BrightnessContrastChannelPane extends BorderPane {
         if (imageDisplay == null)
             return;
         for (ChannelDisplayInfo info : table.getSelectionModel().getSelectedItems()) {
+            // Check if this channel is a representative of an RGB group
+            if (rgbChannelGroups.containsKey(info)) {
+                // Set all channels in the RGB group
+                for (var groupChannel : rgbChannelGroups.get(info)) {
+                    imageDisplay.setChannelSelected(groupChannel, showChannels);
+                }
+            } else {
+                // Regular channel - set it directly
             imageDisplay.setChannelSelected(info, showChannels);
+            }
         }
 		table.refresh();
     }
@@ -242,7 +256,18 @@ public class BrightnessContrastChannelPane extends BorderPane {
             return;
         Set<ChannelDisplayInfo> selected = new HashSet<>(imageDisplay.selectedChannels());
         for (ChannelDisplayInfo info : table.getSelectionModel().getSelectedItems()) {
+            // Check if this channel is a representative of an RGB group
+            if (rgbChannelGroups.containsKey(info)) {
+                // Check the showing status of the RGB group
+                boolean isShowing = isChannelShowing(info);
+                // Toggle all channels in the RGB group
+                for (var groupChannel : rgbChannelGroups.get(info)) {
+                    imageDisplay.setChannelSelected(groupChannel, !isShowing);
+                }
+            } else {
+                // Regular channel - toggle it directly
             imageDisplay.setChannelSelected(info, !selected.contains(info));
+            }
         }
 		table.refresh();
     }
@@ -341,7 +366,18 @@ public class BrightnessContrastChannelPane extends BorderPane {
 
     private boolean isChannelShowing(ChannelDisplayInfo channel) {
         var imageDisplay = imageDisplayProperty().getValue();
-        return imageDisplay != null && imageDisplay.selectedChannels().contains(channel);
+        if (imageDisplay == null)
+            return false;
+        
+        // Check if this channel is a representative of an RGB group
+        if (rgbChannelGroups.containsKey(channel)) {
+            // For RGB groups, check if all channels in the group are selected
+            var groupChannels = rgbChannelGroups.get(channel);
+            return groupChannels.stream().allMatch(ch -> imageDisplay.selectedChannels().contains(ch));
+        } else {
+            // Regular channel - check directly
+            return imageDisplay.selectedChannels().contains(channel);
+        }
     }
 
 
@@ -378,8 +414,18 @@ public class BrightnessContrastChannelPane extends BorderPane {
         var imageDisplay = imageDisplayProperty().getValue();
         if (imageDisplay == null || channels.isEmpty())
             return;
-        for (var channel : channels)
+        for (var channel : channels) {
+            // Check if this channel is a representative of an RGB group
+            if (rgbChannelGroups.containsKey(channel)) {
+                // Select all channels in the RGB group
+                for (var groupChannel : rgbChannelGroups.get(channel)) {
+                    imageDisplay.setChannelSelected(groupChannel, true);
+                }
+            } else {
+                // Regular channel - select it directly
             imageDisplay.setChannelSelected(channel, true);
+            }
+        }
         table.refresh();
     }
 
@@ -396,8 +442,18 @@ public class BrightnessContrastChannelPane extends BorderPane {
         var imageDisplay = imageDisplayProperty().getValue();
         if (imageDisplay == null || channels.isEmpty())
             return;
-        for (var channel : channels)
+        for (var channel : channels) {
+            // Check if this channel is a representative of an RGB group
+            if (rgbChannelGroups.containsKey(channel)) {
+                // Deselect all channels in the RGB group
+                for (var groupChannel : rgbChannelGroups.get(channel)) {
+                    imageDisplay.setChannelSelected(groupChannel, false);
+                }
+            } else {
+                // Regular channel - deselect it directly
             imageDisplay.setChannelSelected(channel, false);
+            }
+        }
         table.refresh();
     }
 
@@ -416,8 +472,19 @@ public class BrightnessContrastChannelPane extends BorderPane {
         var imageDisplay = imageDisplayProperty().getValue();
         if (imageDisplay == null || channels.isEmpty())
             return;
-        for (var channel : channels)
-            imageDisplay.setChannelSelected(channel, !isChannelShowing(channel));
+        for (var channel : channels) {
+            boolean isShowing = isChannelShowing(channel);
+            // Check if this channel is a representative of an RGB group
+            if (rgbChannelGroups.containsKey(channel)) {
+                // Toggle all channels in the RGB group
+                for (var groupChannel : rgbChannelGroups.get(channel)) {
+                    imageDisplay.setChannelSelected(groupChannel, !isShowing);
+                }
+            } else {
+                // Regular channel - toggle it directly
+                imageDisplay.setChannelSelected(channel, !isShowing);
+            }
+        }
         table.refresh();
     }
 
@@ -615,6 +682,9 @@ public class BrightnessContrastChannelPane extends BorderPane {
      * as the representative, but with a simplified display name.
      */
     private List<ChannelDisplayInfo> groupRGBChannels(List<ChannelDisplayInfo> channels) {
+        // Clear previous RGB group mappings
+        rgbChannelGroups.clear();
+        
         // Group channels by base name (without Red/Green/Blue suffix)
         java.util.Map<String, List<ChannelDisplayInfo>> grouped = new java.util.LinkedHashMap<>();
         
@@ -651,6 +721,8 @@ public class BrightnessContrastChannelPane extends BorderPane {
                         .findFirst()
                         .orElse(group.get(0));
                 result.add(redChannel);
+                // Store the mapping: red channel -> all RGB channels in the group
+                rgbChannelGroups.put(redChannel, new ArrayList<>(group));
                 logger.debug("Grouped RGB channels for '{}', showing as single entry", entry.getKey());
             } else {
                 // Not an RGB group - add all channels
