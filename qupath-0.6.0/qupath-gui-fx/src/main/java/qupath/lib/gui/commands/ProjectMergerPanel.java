@@ -120,14 +120,14 @@ public class ProjectMergerPanel {
         HBox topSection = new HBox(10);
         
         // Left: Image import
-        VBox imageBox = createImagePanel();
+        VBox imagePane = createImagePanel();
         
         // Right: Object import
-        VBox objectBox = createObjectPanel();
+        VBox objectPane = createObjectPanel();
         
-        topSection.getChildren().addAll(imageBox, objectBox);
-        HBox.setHgrow(imageBox, Priority.ALWAYS);
-        HBox.setHgrow(objectBox, Priority.ALWAYS);
+        topSection.getChildren().addAll(imagePane, objectPane);
+        HBox.setHgrow(imagePane, Priority.ALWAYS);
+        HBox.setHgrow(objectPane, Priority.ALWAYS);
         
         // ===== Middle: Merge button =====
         Button mergeButton = new Button("⬇ Merge Selected");
@@ -140,13 +140,13 @@ public class ProjectMergerPanel {
         HBox.setHgrow(mergeButton, Priority.ALWAYS);
         
         // ===== Bottom: Merged results =====
-        VBox bottomSection = createMergedPanel();
+        VBox mergedPane = createMergedPanel();
         
         // ===== Layout =====
         VBox centerBox = new VBox(10);
-        centerBox.getChildren().addAll(topSection, mergeBox, bottomSection);
+        centerBox.getChildren().addAll(topSection, mergeBox, mergedPane);
         VBox.setVgrow(topSection, Priority.ALWAYS);
-        VBox.setVgrow(bottomSection, Priority.ALWAYS);
+        VBox.setVgrow(mergedPane, Priority.ALWAYS);
         
         mainPane.setCenter(centerBox);
         
@@ -158,12 +158,24 @@ public class ProjectMergerPanel {
      * Create image import panel (left)
      */
     private VBox createImagePanel() {
-        VBox box = new VBox(10);
-        box.setStyle("-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 10;");
+        VBox mainBox = new VBox(10);
+        mainBox.setStyle("-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 10;");
         
-        // Title
-        Label titleLabel = new Label("📷 Images");
+        // Title with collapse button
+        HBox titleBox = new HBox(5);
+        titleBox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
+        
+        Button collapseBtn = new Button("▼");
+        collapseBtn.setStyle("-fx-font-size: 12px; -fx-padding: 2 8 2 8;");
+        
+        Label titleLabel = new Label("Images");
         titleLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+        
+        titleBox.getChildren().addAll(collapseBtn, titleLabel);
+        HBox.setHgrow(titleLabel, Priority.ALWAYS);
+        
+        // Content box (collapsible)
+        VBox contentBox = new VBox(10);
         
         // Import button
         Button importButton = new Button("Import Images...");
@@ -209,9 +221,8 @@ public class ProjectMergerPanel {
         
         HBox buttonBox = new HBox(5, selectAllImages, clearImages);
         
-        // Layout
-        box.getChildren().addAll(
-            titleLabel,
+        // Layout content
+        contentBox.getChildren().addAll(
             importButton,
             imageSearchField,
             imageListView,
@@ -219,19 +230,48 @@ public class ProjectMergerPanel {
         );
         VBox.setVgrow(imageListView, Priority.ALWAYS);
         
-        return box;
+        // Collapse button functionality
+        collapseBtn.setOnAction(e -> {
+            if (contentBox.isVisible()) {
+                contentBox.setVisible(false);
+                contentBox.setManaged(false);
+                collapseBtn.setText("▶");
+            } else {
+                contentBox.setVisible(true);
+                contentBox.setManaged(true);
+                collapseBtn.setText("▼");
+            }
+        });
+        
+        // Add to main box
+        mainBox.getChildren().addAll(titleBox, contentBox);
+        VBox.setVgrow(contentBox, Priority.ALWAYS);
+        
+        return mainBox;
     }
     
     /**
      * Create object import panel (right)
      */
     private VBox createObjectPanel() {
-        VBox box = new VBox(10);
-        box.setStyle("-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 10;");
+        VBox mainBox = new VBox(10);
+        mainBox.setStyle("-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 10;");
         
-        // Title
-        Label titleLabel = new Label("📝 Objects (JSON/GeoJSON)");
+        // Title with collapse button
+        HBox titleBox = new HBox(5);
+        titleBox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
+        
+        Button collapseBtn = new Button("▼");
+        collapseBtn.setStyle("-fx-font-size: 12px; -fx-padding: 2 8 2 8;");
+        
+        Label titleLabel = new Label("Objects (JSON/GeoJSON)");
         titleLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+        
+        titleBox.getChildren().addAll(collapseBtn, titleLabel);
+        HBox.setHgrow(titleLabel, Priority.ALWAYS);
+        
+        // Content box (collapsible)
+        VBox contentBox = new VBox(10);
         
         // Import button
         Button importButton = new Button("Import Objects...");
@@ -277,9 +317,8 @@ public class ProjectMergerPanel {
         
         HBox buttonBox = new HBox(5, selectAllObjects, clearObjects);
         
-        // Layout
-        box.getChildren().addAll(
-            titleLabel,
+        // Layout content
+        contentBox.getChildren().addAll(
             importButton,
             objectSearchField,
             objectListView,
@@ -287,19 +326,48 @@ public class ProjectMergerPanel {
         );
         VBox.setVgrow(objectListView, Priority.ALWAYS);
         
-        return box;
+        // Collapse button functionality
+        collapseBtn.setOnAction(e -> {
+            if (contentBox.isVisible()) {
+                contentBox.setVisible(false);
+                contentBox.setManaged(false);
+                collapseBtn.setText("▶");
+            } else {
+                contentBox.setVisible(true);
+                contentBox.setManaged(true);
+                collapseBtn.setText("▼");
+            }
+        });
+        
+        // Add to main box
+        mainBox.getChildren().addAll(titleBox, contentBox);
+        VBox.setVgrow(contentBox, Priority.ALWAYS);
+        
+        return mainBox;
     }
     
     /**
      * Create merged results panel (bottom)
      */
     private VBox createMergedPanel() {
-        VBox box = new VBox(10);
-        box.setStyle("-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 10;");
+        VBox mainBox = new VBox(10);
+        mainBox.setStyle("-fx-border-color: lightgray; -fx-border-width: 1; -fx-padding: 10;");
         
-        // Title
-        Label titleLabel = new Label("📊 Merged Results");
+        // Title with collapse button
+        HBox titleBox = new HBox(5);
+        titleBox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 5;");
+        
+        Button collapseBtn = new Button("▼");
+        collapseBtn.setStyle("-fx-font-size: 12px; -fx-padding: 2 8 2 8;");
+        
+        Label titleLabel = new Label("Merged Results (Double-click to open)");
         titleLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+        
+        titleBox.getChildren().addAll(collapseBtn, titleLabel);
+        HBox.setHgrow(titleLabel, Priority.ALWAYS);
+        
+        // Content box (collapsible)
+        VBox contentBox = new VBox(10);
         
         // Merged list
         mergedListView = new ListView<>(mergedEntries);
@@ -350,11 +418,28 @@ public class ProjectMergerPanel {
         
         HBox buttonBox = new HBox(5, openButton, removeButton, clearAllButton);
         
-        // Layout
-        box.getChildren().addAll(titleLabel, mergedListView, buttonBox);
+        // Layout content
+        contentBox.getChildren().addAll(mergedListView, buttonBox);
         VBox.setVgrow(mergedListView, Priority.ALWAYS);
         
-        return box;
+        // Collapse button functionality
+        collapseBtn.setOnAction(e -> {
+            if (contentBox.isVisible()) {
+                contentBox.setVisible(false);
+                contentBox.setManaged(false);
+                collapseBtn.setText("▶");
+            } else {
+                contentBox.setVisible(true);
+                contentBox.setManaged(true);
+                collapseBtn.setText("▼");
+            }
+        });
+        
+        // Add to main box
+        mainBox.getChildren().addAll(titleBox, contentBox);
+        VBox.setVgrow(contentBox, Priority.ALWAYS);
+        
+        return mainBox;
     }
     
     /**

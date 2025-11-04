@@ -47,6 +47,8 @@ public class HierarchicalChannelPanel extends VBox {
     private QuPathViewer viewer;
     private Map<String, ChannelGroup> channelGroups = new LinkedHashMap<>();
     private VBox channelListContainer;
+    private javafx.collections.ListChangeListener<ChannelDisplayInfo> channelSelectionListener;
+    private boolean isUpdatingCheckboxes = false; // Prevent recursive updates
     
     public HierarchicalChannelPanel(QuPathViewer viewer) {
         this.viewer = viewer;
@@ -64,6 +66,42 @@ public class HierarchicalChannelPanel extends VBox {
         this.getChildren().addAll(title, scrollPane);
         
         updateChannelList();
+        
+        // Listen to imageData changes to update listener
+        viewer.imageDataProperty().addListener((obs, oldData, newData) -> {
+            updateChannelList();
+            setupChannelListener();
+        });
+        
+        // Setup initial listener
+        setupChannelListener();
+    }
+    
+    /**
+     * Setup listener for channel selection changes
+     */
+    private void setupChannelListener() {
+        // Remove old listener if exists
+        if (channelSelectionListener != null && viewer.getImageDisplay() != null) {
+            try {
+                viewer.getImageDisplay().selectedChannels().removeListener(channelSelectionListener);
+            } catch (Exception e) {
+                // Ignore if listener wasn't added
+            }
+        }
+        
+        // Create and add new listener
+        if (viewer.getImageDisplay() != null) {
+            channelSelectionListener = c -> {
+                // Update all checkbox states when selection changes
+                if (!isUpdatingCheckboxes) {
+                    logger.debug("Channel selection changed, updating right panel checkboxes");
+                    javafx.application.Platform.runLater(() -> updateAllCheckboxStates());
+                }
+            };
+            viewer.getImageDisplay().selectedChannels().addListener(channelSelectionListener);
+            logger.debug("Channel selection listener added to HierarchicalChannelPanel");
+        }
     }
     
     public void updateChannelList() {
@@ -134,6 +172,15 @@ public class HierarchicalChannelPanel extends VBox {
         return hasRed && hasGreen && hasBlue;
     }
     
+    /**
+     * Update all checkbox states to match the current ImageDisplay selection
+     */
+    private void updateAllCheckboxStates() {
+        for (ChannelGroup group : channelGroups.values()) {
+            group.refreshCheckboxStates();
+        }
+    }
+    
     // Helper class to store channel information
     private static class ChannelInfo {
         ChannelDisplayInfo channel;
@@ -180,8 +227,15 @@ public class HierarchicalChannelPanel extends VBox {
                 // Group checkbox
                 groupCheckbox = new CheckBox(groupName);
                 groupCheckbox.setOnAction(e -> {
-                    boolean selected = groupCheckbox.isSelected();
-                    selectAllChannels(selected);
+                    if (!isUpdatingCheckboxes) {
+                        isUpdatingCheckboxes = true;
+                        try {
+                            boolean selected = groupCheckbox.isSelected();
+                            selectAllChannels(selected);
+                        } finally {
+                            isUpdatingCheckboxes = false;
+                        }
+                    }
                 });
                 
                 // Color indicator (show mixed color)
@@ -210,8 +264,15 @@ public class HierarchicalChannelPanel extends VBox {
                 ChannelInfo info = channels.get(0);
                 CheckBox checkbox = new CheckBox(groupName);
                 checkbox.setOnAction(e -> {
-                    var display = viewer.getImageDisplay();
-                    display.setChannelSelected(info.channel, checkbox.isSelected());
+                    if (!isUpdatingCheckboxes) {
+                        isUpdatingCheckboxes = true;
+                        try {
+                            var display = viewer.getImageDisplay();
+                            display.setChannelSelected(info.channel, checkbox.isSelected());
+                        } finally {
+                            isUpdatingCheckboxes = false;
+                        }
+                    }
                 });
                 
                 Rectangle colorRect = new Rectangle(20, 15);
@@ -239,9 +300,16 @@ public class HierarchicalChannelPanel extends VBox {
             
             CheckBox checkbox = new CheckBox(info.subType);
             checkbox.setOnAction(e -> {
-                var display = viewer.getImageDisplay();
-                display.setChannelSelected(info.channel, checkbox.isSelected());
-                updateGroupCheckboxState();
+                if (!isUpdatingCheckboxes) {
+                    isUpdatingCheckboxes = true;
+                    try {
+                        var display = viewer.getImageDisplay();
+                        display.setChannelSelected(info.channel, checkbox.isSelected());
+                        updateGroupCheckboxState();
+                    } finally {
+                        isUpdatingCheckboxes = false;
+                    }
+                }
             });
             
             Rectangle colorRect = new Rectangle(20, 15);
@@ -324,6 +392,72 @@ public class HierarchicalChannelPanel extends VBox {
         
         VBox getRootNode() {
             return rootNode;
+        }
+        
+        /**
+         * Refresh all checkbox states to match current ImageDisplay selection
+         */
+        void refreshCheckboxStates() {
+            isUpdatingCheckboxes = true;
+            try {
+                var display = viewer.getImageDisplay();
+                if (display == null) return;
+                
+                logger.debug("Refreshing checkbox states for group: {}", groupName);
+                
+                if (isRGB) {
+                    // Update group checkbox
+                    updateGroupCheckboxState();
+                    
+                    // Update child checkboxes
+                    if (childrenContainer != null) {
+                        for (var node : childrenContainer.getChildren()) {
+                            if (node instanceof HBox) {
+                                HBox row = (HBox) node;
+                                // Find the checkbox and channel info
+                                for (int i = 0; i < row.getChildren().size(); i++) {
+                                    if (row.getChildren().get(i) instanceof CheckBox) {
+                                        CheckBox cb = (CheckBox) row.getChildren().get(i);
+                                        // Find matching channel by checkbox text
+                                        for (ChannelInfo info : channels) {
+                                            if (info.subType != null && info.subType.equals(cb.getText())) {
+                                                boolean shouldBeSelected = display.selectedChannels().contains(info.channel);
+                                                if (cb.isSelected() != shouldBeSelected) {
+                                                    cb.setSelected(shouldBeSelected);
+                                                    logger.debug("Updated {} checkbox to {}", info.subType, shouldBeSelected);
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // Single channel - update checkbox
+                    if (!channels.isEmpty()) {
+                        ChannelInfo info = channels.get(0);
+                        // Find checkbox in rootNode
+                        for (var node : rootNode.getChildren()) {
+                            if (node instanceof HBox) {
+                                for (var child : ((HBox) node).getChildren()) {
+                                    if (child instanceof CheckBox) {
+                                        CheckBox cb = (CheckBox) child;
+                                        boolean shouldBeSelected = display.selectedChannels().contains(info.channel);
+                                        if (cb.isSelected() != shouldBeSelected) {
+                                            cb.setSelected(shouldBeSelected);
+                                            logger.debug("Updated {} checkbox to {}", groupName, shouldBeSelected);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } finally {
+                isUpdatingCheckboxes = false;
+            }
         }
     }
 }
