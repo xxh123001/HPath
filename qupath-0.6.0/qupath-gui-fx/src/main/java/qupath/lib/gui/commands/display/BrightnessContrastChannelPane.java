@@ -134,6 +134,17 @@ public class BrightnessContrastChannelPane extends BorderPane {
      */
     private final CheckBox cbShowAll = new CheckBox();
 
+    /**
+     * Cache of BooleanProperty objects for each channel's "show" state
+     * This allows the properties to be updated when selectedChannels changes
+     */
+    private final Map<ChannelDisplayInfo, SimpleBooleanProperty> channelShowProperties = new HashMap<>();
+
+    /**
+     * Flag to prevent circular updates when syncing checkbox states
+     */
+    private boolean isUpdatingFromListener = false;
+
     private ListChangeListener<ChannelDisplayInfo> availableChannelsChangeListener = this::handleAvailableChannelsChange;
 
     private ObservableList<ChannelDisplayInfo> channelList = FXCollections.observableArrayList();
@@ -229,15 +240,13 @@ public class BrightnessContrastChannelPane extends BorderPane {
         if (imageDisplay == null)
             return;
         for (ChannelDisplayInfo info : table.getSelectionModel().getSelectedItems()) {
-            // Check if this channel is a representative of an RGB group
+            // For RGB groups, set all channels in the group
             if (rgbChannelGroups.containsKey(info)) {
-                // Set all channels in the RGB group
                 for (var groupChannel : rgbChannelGroups.get(info)) {
                     imageDisplay.setChannelSelected(groupChannel, showChannels);
                 }
             } else {
-                // Regular channel - set it directly
-            imageDisplay.setChannelSelected(info, showChannels);
+                imageDisplay.setChannelSelected(info, showChannels);
             }
         }
 		table.refresh();
@@ -256,17 +265,14 @@ public class BrightnessContrastChannelPane extends BorderPane {
             return;
         Set<ChannelDisplayInfo> selected = new HashSet<>(imageDisplay.selectedChannels());
         for (ChannelDisplayInfo info : table.getSelectionModel().getSelectedItems()) {
-            // Check if this channel is a representative of an RGB group
+            boolean isShowing = isChannelShowing(info);
+            // For RGB groups, toggle all channels in the group
             if (rgbChannelGroups.containsKey(info)) {
-                // Check the showing status of the RGB group
-                boolean isShowing = isChannelShowing(info);
-                // Toggle all channels in the RGB group
                 for (var groupChannel : rgbChannelGroups.get(info)) {
                     imageDisplay.setChannelSelected(groupChannel, !isShowing);
                 }
             } else {
-                // Regular channel - toggle it directly
-            imageDisplay.setChannelSelected(info, !selected.contains(info));
+                imageDisplay.setChannelSelected(info, !selected.contains(info));
             }
         }
 		table.refresh();
@@ -302,8 +308,30 @@ public class BrightnessContrastChannelPane extends BorderPane {
         // Could change in the future if needed
 
         col1.setSortable(false);
-        TableColumn<ChannelDisplayInfo, Boolean> col2 = new TableColumn<>("Show");
+        
+        // Create Show column with custom header containing All/None buttons
+        TableColumn<ChannelDisplayInfo, Boolean> col2 = new TableColumn<>();
         col2.setId("show-column");
+        
+        // Create custom header with buttons
+        javafx.scene.control.Button btnSelectAll = new javafx.scene.control.Button("All");
+        btnSelectAll.setStyle("-fx-font-size: 9px; -fx-padding: 2 5 2 5;");
+        btnSelectAll.setTooltip(new javafx.scene.control.Tooltip("Show all channels"));
+        btnSelectAll.setOnAction(e -> setShowChannels(table.getItems()));
+        
+        javafx.scene.control.Button btnDeselectAll = new javafx.scene.control.Button("None");
+        btnDeselectAll.setStyle("-fx-font-size: 9px; -fx-padding: 2 5 2 5;");
+        btnDeselectAll.setTooltip(new javafx.scene.control.Tooltip("Hide all channels"));
+        btnDeselectAll.setOnAction(e -> setHideChannels(table.getItems()));
+        
+        javafx.scene.layout.VBox headerBox = new javafx.scene.layout.VBox(2);
+        headerBox.setAlignment(javafx.geometry.Pos.CENTER);
+        Label showLabel = new Label("Show");
+        javafx.scene.layout.HBox buttonBox = new javafx.scene.layout.HBox(3, btnSelectAll, btnDeselectAll);
+        buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
+        headerBox.getChildren().addAll(showLabel, buttonBox);
+        col2.setGraphic(headerBox);
+        
         col2.setCellValueFactory(this::showChannelCellValueFactory);
         col2.setCellFactory(column -> new ShowChannelDisplayTableCell());
         col2.setSortable(false);
@@ -343,14 +371,36 @@ public class BrightnessContrastChannelPane extends BorderPane {
 
     private ObservableValue<Boolean> showChannelCellValueFactory(
             TableColumn.CellDataFeatures<ChannelDisplayInfo, Boolean> features) {
-        SimpleBooleanProperty property = new SimpleBooleanProperty(
-                isChannelShowing(features.getValue()));
-        property.addListener((v, o, n) -> {
-            if (n)
-                setShowChannel(features.getValue());
-            else
-                setHideChannel(features.getValue());
+        ChannelDisplayInfo channel = features.getValue();
+        
+        // Get or create a cached property for this channel
+        SimpleBooleanProperty property = channelShowProperties.computeIfAbsent(channel, ch -> {
+            SimpleBooleanProperty newProperty = new SimpleBooleanProperty(isChannelShowing(ch));
+            newProperty.addListener((v, o, n) -> {
+                // Only update ImageDisplay if not already updating from listener
+                // This prevents circular updates when ExpandableChannelPane changes selection
+                if (!isUpdatingFromListener) {
+                    if (n)
+                        setShowChannel(ch);
+                    else
+                        setHideChannel(ch);
+                }
+            });
+            return newProperty;
         });
+        
+        // Update the property value in case it's stale (only if it changed)
+        // Don't trigger listener callbacks during this update
+        boolean shouldShow = isChannelShowing(channel);
+        if (property.get() != shouldShow) {
+            isUpdatingFromListener = true;
+            try {
+                property.set(shouldShow);
+            } finally {
+                isUpdatingFromListener = false;
+            }
+        }
+        
         return property;
     }
 
@@ -369,13 +419,19 @@ public class BrightnessContrastChannelPane extends BorderPane {
         if (imageDisplay == null)
             return false;
         
-        // Check if this channel is a representative of an RGB group
+        // For RGB groups, check if ANY channel in the group is selected
+        // This matches the behavior of ExpandableChannelPane
         if (rgbChannelGroups.containsKey(channel)) {
-            // For RGB groups, check if all channels in the group are selected
             var groupChannels = rgbChannelGroups.get(channel);
-            return groupChannels.stream().allMatch(ch -> imageDisplay.selectedChannels().contains(ch));
+            boolean anySelected = groupChannels.stream().anyMatch(ch -> imageDisplay.selectedChannels().contains(ch));
+            logger.debug("RGB group '{}' has {} channels, anySelected={}", 
+                channel.getName(), groupChannels.size(), anySelected);
+            for (var ch : groupChannels) {
+                logger.debug("  - Channel '{}' selected={}", 
+                    ch.getName(), imageDisplay.selectedChannels().contains(ch));
+            }
+            return anySelected;
         } else {
-            // Regular channel - check directly
             return imageDisplay.selectedChannels().contains(channel);
         }
     }
@@ -415,15 +471,13 @@ public class BrightnessContrastChannelPane extends BorderPane {
         if (imageDisplay == null || channels.isEmpty())
             return;
         for (var channel : channels) {
-            // Check if this channel is a representative of an RGB group
+            // For RGB groups in the left table, select all channels in the group
             if (rgbChannelGroups.containsKey(channel)) {
-                // Select all channels in the RGB group
                 for (var groupChannel : rgbChannelGroups.get(channel)) {
                     imageDisplay.setChannelSelected(groupChannel, true);
                 }
             } else {
-                // Regular channel - select it directly
-            imageDisplay.setChannelSelected(channel, true);
+                imageDisplay.setChannelSelected(channel, true);
             }
         }
         table.refresh();
@@ -443,15 +497,13 @@ public class BrightnessContrastChannelPane extends BorderPane {
         if (imageDisplay == null || channels.isEmpty())
             return;
         for (var channel : channels) {
-            // Check if this channel is a representative of an RGB group
+            // For RGB groups in the left table, deselect all channels in the group
             if (rgbChannelGroups.containsKey(channel)) {
-                // Deselect all channels in the RGB group
                 for (var groupChannel : rgbChannelGroups.get(channel)) {
                     imageDisplay.setChannelSelected(groupChannel, false);
                 }
             } else {
-                // Regular channel - deselect it directly
-            imageDisplay.setChannelSelected(channel, false);
+                imageDisplay.setChannelSelected(channel, false);
             }
         }
         table.refresh();
@@ -474,14 +526,12 @@ public class BrightnessContrastChannelPane extends BorderPane {
             return;
         for (var channel : channels) {
             boolean isShowing = isChannelShowing(channel);
-            // Check if this channel is a representative of an RGB group
+            // For RGB groups, toggle all channels in the group
             if (rgbChannelGroups.containsKey(channel)) {
-                // Toggle all channels in the RGB group
                 for (var groupChannel : rgbChannelGroups.get(channel)) {
                     imageDisplay.setChannelSelected(groupChannel, !isShowing);
                 }
             } else {
-                // Regular channel - toggle it directly
                 imageDisplay.setChannelSelected(channel, !isShowing);
             }
         }
@@ -648,6 +698,10 @@ public class BrightnessContrastChannelPane extends BorderPane {
         // Group RGB channels together (only show one representative per RGB image)
         List<ChannelDisplayInfo> processedItems = groupRGBChannels(items);
         
+        // Clean up cached properties for channels that no longer exist
+        // This prevents memory leaks and stale data
+        channelShowProperties.keySet().retainAll(processedItems);
+        
         var selected = table.getSelectionModel().getSelectedItem();
         if (selected == null && imageDisplayProperty().get() != null)
             selected = imageDisplayProperty().get().switchToGrayscaleChannelProperty().get();
@@ -780,18 +834,11 @@ public class BrightnessContrastChannelPane extends BorderPane {
 
 
     /**
-     * Install the checkbox for showing all channels
+     * Install the checkbox for showing all channels (now handled in createChannelDisplayTable)
      */
     private void updateShowTableColumnHeader() {
-        var header = table.lookup("#show-column > .label");
-        if (header instanceof Label label) {
-            label.setContentDisplay(ContentDisplay.RIGHT);
-            label.setGraphicTextGap(5);
-            if (cbShowAll.isVisible())
-                label.setGraphic(cbShowAll);
-            // Bind visibility property to whether the checkbox is added to the label or not
-            cbShowAll.visibleProperty().addListener((v, o, n) -> label.setGraphic(n ? cbShowAll : null));
-        }
+        // Header is now set up directly in createChannelDisplayTable with All/None buttons
+        // This method is kept for compatibility but doesn't need to do anything
     }
 
 
@@ -982,7 +1029,24 @@ public class BrightnessContrastChannelPane extends BorderPane {
             } else {
                 cbShowAll.setIndeterminate(true);
             }
-            // Only necessary because it's possible that the channel selection is changed externally
+            
+            // Update all cached channel show properties to reflect current selection
+            // This is necessary when channel selection is changed externally (e.g., from ExpandableChannelPane)
+            // Set flag to prevent circular updates
+            isUpdatingFromListener = true;
+            try {
+                for (Map.Entry<ChannelDisplayInfo, SimpleBooleanProperty> entry : channelShowProperties.entrySet()) {
+                    boolean shouldShow = isChannelShowing(entry.getKey());
+                    // Only update if the value changed to avoid triggering unnecessary listeners
+                    if (entry.getValue().get() != shouldShow) {
+                        entry.getValue().set(shouldShow);
+                    }
+                }
+            } finally {
+                isUpdatingFromListener = false;
+            }
+            
+            // Refresh table to update UI
             table.refresh();
             var current = currentChannelProperty().get();
             activeChannelVisible.set(current != null && isChannelShowing(current));

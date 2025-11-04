@@ -33,7 +33,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import qupath.fx.dialogs.Dialogs;
 import qupath.lib.display.ChannelDisplayInfo;
 import qupath.lib.display.ImageDisplay;
 import qupath.lib.gui.viewer.QuPathViewer;
@@ -51,15 +50,31 @@ public class ExpandableChannelPane extends VBox {
     private QuPathViewer viewer;
     private ListView<ChannelRow> channelListView;
     private Map<String, ChannelGroup> channelGroups = new LinkedHashMap<>();
+    private javafx.collections.ListChangeListener<ChannelDisplayInfo> channelSelectionListener;
+    private boolean isUpdatingCheckboxes = false;
     
     public ExpandableChannelPane(QuPathViewer viewer) {
         this.viewer = viewer;
         this.setPadding(new Insets(3));
         this.setSpacing(3);
         
-        // Title - larger font
+        // Title with All/None buttons
         Label titleLabel = new Label("Channel");
-        titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 3 0 3 0;");
+        titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 13px;");
+        
+        Button btnSelectAll = new Button("All");
+        btnSelectAll.setStyle("-fx-font-size: 9px; -fx-padding: 2 5 2 5;");
+        btnSelectAll.setTooltip(new Tooltip("Show all channels"));
+        btnSelectAll.setOnAction(e -> selectAllChannels());
+        
+        Button btnDeselectAll = new Button("None");
+        btnDeselectAll.setStyle("-fx-font-size: 9px; -fx-padding: 2 5 2 5;");
+        btnDeselectAll.setTooltip(new Tooltip("Hide all channels"));
+        btnDeselectAll.setOnAction(e -> deselectAllChannels());
+        
+        HBox titleBox = new HBox(10, titleLabel, btnSelectAll, btnDeselectAll);
+        titleBox.setAlignment(Pos.CENTER_LEFT);
+        titleBox.setPadding(new Insets(3, 0, 3, 0));
         
         // Single column layout with larger font
         channelListView = new ListView<>();
@@ -68,14 +83,129 @@ public class ExpandableChannelPane extends VBox {
         channelListView.setStyle("-fx-fixed-cell-size: 32; -fx-font-size: 12px;"); // Larger row height and font
         VBox.setVgrow(channelListView, Priority.ALWAYS);
         
-        this.getChildren().addAll(titleLabel, channelListView);
+        this.getChildren().addAll(titleBox, channelListView);
         
         // Listen to image data changes
         viewer.imageDataProperty().addListener((obs, oldData, newData) -> {
-            Platform.runLater(this::updateChannelList);
+            Platform.runLater(() -> {
+                updateChannelList();
+                setupChannelSelectionListener();
+            });
         });
         
         updateChannelList();
+        setupChannelSelectionListener();
+    }
+    
+    /**
+     * Setup listener for channel selection changes from left table
+     */
+    private void setupChannelSelectionListener() {
+        // Remove old listener if exists
+        if (channelSelectionListener != null && viewer.getImageDisplay() != null) {
+            try {
+                viewer.getImageDisplay().selectedChannels().removeListener(channelSelectionListener);
+            } catch (Exception e) {
+                // Ignore
+            }
+        }
+        
+        // Add new listener
+        if (viewer.getImageDisplay() != null) {
+            channelSelectionListener = c -> {
+                if (!isUpdatingCheckboxes) {
+                    logger.debug("Channel selection changed, updating ExpandableChannelPane checkboxes");
+                    Platform.runLater(this::updateAllCheckboxStates);
+                }
+            };
+            viewer.getImageDisplay().selectedChannels().addListener(channelSelectionListener);
+            logger.debug("Channel selection listener added to ExpandableChannelPane");
+        }
+    }
+    
+    /**
+     * Update all checkbox states to match current ImageDisplay selection
+     */
+    private void updateAllCheckboxStates() {
+        isUpdatingCheckboxes = true;
+        try {
+            for (ChannelRow row : channelListView.getItems()) {
+                row.updateCheckboxState();
+            }
+            for (ChannelGroup group : channelGroups.values()) {
+                group.updateCheckboxStates();
+            }
+        } finally {
+            isUpdatingCheckboxes = false;
+        }
+    }
+    
+    /**
+     * Select all channels
+     */
+    private void selectAllChannels() {
+        isUpdatingCheckboxes = true;
+        try {
+            ImageDisplay display = viewer.getImageDisplay();
+            if (display != null) {
+                // Handle all channels including those in groups
+                for (ChannelGroup group : channelGroups.values()) {
+                    for (ChannelDisplayInfo ch : group.channels) {
+                        display.setChannelSelected(ch, true);
+                    }
+                }
+                
+                // Handle individual channels
+                for (ChannelRow row : channelListView.getItems()) {
+                    if (row.channel != null && !row.isParent && !row.isChild) {
+                        display.setChannelSelected(row.channel, true);
+                    }
+                }
+                
+                // Update UI
+                Platform.runLater(() -> {
+                    updateAllCheckboxStates();
+                    channelListView.refresh(); // Refresh to update colors
+                });
+                viewer.repaint();
+            }
+        } finally {
+            isUpdatingCheckboxes = false;
+        }
+    }
+    
+    /**
+     * Deselect all channels
+     */
+    private void deselectAllChannels() {
+        isUpdatingCheckboxes = true;
+        try {
+            ImageDisplay display = viewer.getImageDisplay();
+            if (display != null) {
+                // Handle all channels including those in groups
+                for (ChannelGroup group : channelGroups.values()) {
+                    for (ChannelDisplayInfo ch : group.channels) {
+                        display.setChannelSelected(ch, false);
+                    }
+                }
+                
+                // Handle individual channels
+                for (ChannelRow row : channelListView.getItems()) {
+                    if (row.channel != null && !row.isParent && !row.isChild) {
+                        display.setChannelSelected(row.channel, false);
+                    }
+                }
+                
+                // Update UI
+                Platform.runLater(() -> {
+                    updateAllCheckboxStates();
+                    channelListView.refresh(); // Refresh to update colors
+                });
+                viewer.repaint();
+            }
+        } finally {
+            isUpdatingCheckboxes = false;
+        }
     }
     
     private void updateChannelList() {
@@ -174,7 +304,8 @@ public class ExpandableChannelPane extends VBox {
         String displayName; // Custom display name for parent rows
         boolean isParent;
         boolean isChild;
-        ChannelGroup parentGroup;
+        ChannelGroup parentGroup; // For child rows - reference to parent group
+        ChannelGroup ownedGroup;  // For parent rows - reference to the group this row owns
         BooleanProperty selectedProperty = new SimpleBooleanProperty(false);
         BooleanProperty expandedProperty = new SimpleBooleanProperty(false);
         
@@ -198,10 +329,29 @@ public class ExpandableChannelPane extends VBox {
         }
         
         void updateSelectionState() {
-            if (channel != null) {
-                ImageDisplay display = viewer.getImageDisplay();
+            ImageDisplay display = viewer.getImageDisplay();
+            
+            if (isParent && ownedGroup != null) {
+                // For parent rows, check if ANY child channel is selected
+                boolean anySelected = false;
+                for (ChannelDisplayInfo ch : ownedGroup.channels) {
+                    if (display.selectedChannels().contains(ch)) {
+                        anySelected = true;
+                        break;
+                    }
+                }
+                selectedProperty.set(anySelected);
+            } else if (channel != null) {
+                // For regular channels, check if this channel is selected
                 selectedProperty.set(display.selectedChannels().contains(channel));
             }
+        }
+        
+        /**
+         * Update checkbox state to match ImageDisplay (called from listener)
+         */
+        void updateCheckboxState() {
+            updateSelectionState();
         }
     }
     
@@ -224,6 +374,8 @@ public class ExpandableChannelPane extends VBox {
             // Use first channel as representative for color and data
             this.parentRow = new ChannelRow(channels.get(0), true, null, name);
             this.parentRow.expandedProperty = this.expandedProperty;
+            this.parentRow.ownedGroup = this; // Set reference so parent can check child selection states
+            this.parentRow.updateSelectionState(); // Update state after setting ownedGroup
             
             logger.info("Created parent row for '{}' with display name: {}", name, this.parentRow.getDisplayName());
             
@@ -254,14 +406,19 @@ public class ExpandableChannelPane extends VBox {
         }
         
         void toggleAllChannels(boolean selected) {
-            ImageDisplay display = viewer.getImageDisplay();
-            for (ChannelDisplayInfo ch : channels) {
-                display.setChannelSelected(ch, selected);
-            }
-            // Update UI
-            parentRow.updateSelectionState();
-            for (ChannelRow child : childRows) {
-                child.updateSelectionState();
+            isUpdatingCheckboxes = true;
+            try {
+                ImageDisplay display = viewer.getImageDisplay();
+                for (ChannelDisplayInfo ch : channels) {
+                    display.setChannelSelected(ch, selected);
+                }
+                // Update UI
+                parentRow.updateSelectionState();
+                for (ChannelRow child : childRows) {
+                    child.updateSelectionState();
+                }
+            } finally {
+                isUpdatingCheckboxes = false;
             }
         }
         
@@ -273,6 +430,16 @@ public class ExpandableChannelPane extends VBox {
                 }
             }
             return true;
+        }
+        
+        /**
+         * Update checkbox states to match current ImageDisplay selection
+         */
+        void updateCheckboxStates() {
+            parentRow.updateCheckboxState();
+            for (ChannelRow child : childRows) {
+                child.updateCheckboxState();
+            }
         }
     }
     
@@ -311,30 +478,39 @@ public class ExpandableChannelPane extends VBox {
             // Checkbox action
             checkBox.setOnAction(e -> {
                 ChannelRow row = getItem();
-                if (row != null) {
-                    if (row.isParent) {
-                        // Toggle all channels in group using display name
-                        String baseName = row.getDisplayName();
-                        ChannelGroup group = channelGroups.get(baseName);
-                        if (group != null) {
-                            logger.info("Toggling all channels in group '{}' to: {}", baseName, checkBox.isSelected());
-                            group.toggleAllChannels(checkBox.isSelected());
+                if (row != null && !isUpdatingCheckboxes) {
+                    isUpdatingCheckboxes = true;
+                    try {
+                        if (row.isParent) {
+                            // Toggle all channels in group using display name
+                            String baseName = row.getDisplayName();
+                            ChannelGroup group = channelGroups.get(baseName);
+                            if (group != null) {
+                                logger.info("Toggling all channels in group '{}' to: {}", baseName, checkBox.isSelected());
+                                group.toggleAllChannels(checkBox.isSelected());
+                                // Refresh to update parent row color
+                                Platform.runLater(() -> channelListView.refresh());
+                            } else {
+                                logger.warn("Could not find channel group for base name: {}", baseName);
+                            }
                         } else {
-                            logger.warn("Could not find channel group for base name: {}", baseName);
+                            // Toggle single channel
+                            ImageDisplay display = viewer.getImageDisplay();
+                            display.setChannelSelected(row.channel, checkBox.isSelected());
+                            row.updateSelectionState();
+                            
+                            // Update parent if this is a child
+                            if (row.isChild && row.parentGroup != null) {
+                                row.parentGroup.parentRow.updateSelectionState();
+                                // Refresh to update parent row color
+                                Platform.runLater(() -> channelListView.refresh());
+                            }
                         }
-                    } else {
-                        // Toggle single channel
-                        ImageDisplay display = viewer.getImageDisplay();
-                        display.setChannelSelected(row.channel, checkBox.isSelected());
-                        row.updateSelectionState();
-                        
-                        // Update parent if this is a child
-                        if (row.isChild && row.parentGroup != null) {
-                            row.parentGroup.parentRow.updateSelectionState();
-                        }
+                        viewer.repaint();
+                    } finally {
+                        isUpdatingCheckboxes = false;
                     }
                 }
-                viewer.repaint();
             });
             
             // Color rect double-click to change color
@@ -377,7 +553,7 @@ public class ExpandableChannelPane extends VBox {
                 container.getChildren().add(spacer);
             }
             
-            // Checkbox
+            // Checkbox - set state directly from row (no bidirectional binding to avoid loops)
             checkBox.setSelected(row.selectedProperty.get());
             container.getChildren().add(checkBox);
             
@@ -410,12 +586,47 @@ public class ExpandableChannelPane extends VBox {
         }
         
         private void updateColorRect(ChannelDisplayInfo channel) {
+            ChannelRow row = getItem();
+            
+            // For parent RGB rows, show mixed color based on selected children
+            if (row != null && row.isParent) {
+                String baseName = row.getDisplayName();
+                ChannelGroup group = channelGroups.get(baseName);
+                if (group != null) {
+                    int r = 0, g = 0, b = 0;
+                    ImageDisplay display = viewer.getImageDisplay();
+                    
+                    // Mix colors of selected channels
+                    for (ChannelDisplayInfo ch : group.channels) {
+                        if (display.selectedChannels().contains(ch)) {
+                            Integer colorValue = ch.getColor();
+                            if (colorValue != null) {
+                                r += (colorValue >> 16) & 0xFF;
+                                g += (colorValue >> 8) & 0xFF;
+                                b += colorValue & 0xFF;
+                            }
+                        }
+                    }
+                    
+                    // Clamp values to 255
+                    r = Math.min(255, r);
+                    g = Math.min(255, g);
+                    b = Math.min(255, b);
+                    
+                    colorRect.setFill(Color.rgb(r, g, b));
+                    return;
+                }
+            }
+            
+            // For regular channels, use their own color
+            if (channel != null) {
             Integer colorValue = channel.getColor();
             if (colorValue != null) {
                 int r = (colorValue >> 16) & 0xFF;
                 int g = (colorValue >> 8) & 0xFF;
                 int b = colorValue & 0xFF;
                 colorRect.setFill(Color.rgb(r, g, b));
+                }
             }
         }
         
