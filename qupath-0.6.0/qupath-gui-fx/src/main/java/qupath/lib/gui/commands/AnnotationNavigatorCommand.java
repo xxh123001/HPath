@@ -126,10 +126,8 @@ public class AnnotationNavigatorCommand {
                     String name = obj.getName() != null ? obj.getName() : "Unnamed";
                     
                     // Try to get custom IDs first, fallback to QuPath UUID
-                    String customId = obj.retrieveMetadataValue("id") != null ? 
-                        obj.retrieveMetadataValue("id").toString() : null;
-                    String kId = obj.retrieveMetadataValue("kId") != null ? 
-                        obj.retrieveMetadataValue("kId").toString() : null;
+                    String customId = obj.getMetadata().get("id");
+                    String kId = obj.getMetadata().get("kId");
                     String qupathId = obj.getID() != null ? obj.getID().toString() : null;
                     
                     // Use custom ID if available, otherwise use QuPath ID
@@ -287,19 +285,15 @@ public class AnnotationNavigatorCommand {
                 
                 // Search in custom ID properties (from imported JSON)
                 // Check for "id" property
-                if (obj.retrieveMetadataValue("id") != null) {
-                    String customId = obj.retrieveMetadataValue("id").toString().toLowerCase();
-                    if (customId.contains(lowerSearch)) {
-                        return true;
-                    }
+                String customId = obj.getMetadata().get("id");
+                if (customId != null && customId.toLowerCase().contains(lowerSearch)) {
+                    return true;
                 }
                 
                 // Check for "kId" property  
-                if (obj.retrieveMetadataValue("kId") != null) {
-                    String kId = obj.retrieveMetadataValue("kId").toString().toLowerCase();
-                    if (kId.contains(lowerSearch)) {
-                        return true;
-                    }
+                String kId = obj.getMetadata().get("kId");
+                if (kId != null && kId.toLowerCase().contains(lowerSearch)) {
+                    return true;
                 }
                 
                 // Search in measurements
