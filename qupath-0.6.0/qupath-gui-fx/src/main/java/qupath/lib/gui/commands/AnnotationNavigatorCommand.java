@@ -124,7 +124,25 @@ public class AnnotationNavigatorCommand {
                     String className = obj.getPathClass() != null ? 
                         obj.getPathClass().toString() : "Unclassified";
                     String name = obj.getName() != null ? obj.getName() : "Unnamed";
-                    String id = obj.getID() != null ? obj.getID().toString().substring(0, 8) : "no-id";
+                    
+                    // Try to get custom IDs first, fallback to QuPath UUID
+                    String customId = obj.retrieveMetadataValue("id") != null ? 
+                        obj.retrieveMetadataValue("id").toString() : null;
+                    String kId = obj.retrieveMetadataValue("kId") != null ? 
+                        obj.retrieveMetadataValue("kId").toString() : null;
+                    String qupathId = obj.getID() != null ? obj.getID().toString() : null;
+                    
+                    // Use custom ID if available, otherwise use QuPath ID
+                    String displayId;
+                    if (customId != null) {
+                        displayId = customId.length() > 8 ? customId.substring(0, 8) : customId;
+                    } else if (kId != null) {
+                        displayId = kId.length() > 8 ? kId.substring(0, 8) : kId;
+                    } else if (qupathId != null) {
+                        displayId = qupathId.length() > 8 ? qupathId.substring(0, 8) : qupathId;
+                    } else {
+                        displayId = "no-id";
+                    }
                     
                     // Add measurement info
                     int numMeasurements = obj.getMeasurementList().size();
@@ -132,20 +150,34 @@ public class AnnotationNavigatorCommand {
                         String.format(" [%d measurements]", numMeasurements) : "";
                     
                     String text = String.format("[%s] %s%s\n   ID: %s...", 
-                        className, name, measurementInfo, id);
+                        className, name, measurementInfo, displayId);
                     setText(text);
                     
                     // Tooltip with more details
                     ROI roi = obj.getROI();
-                    String tooltipText = String.format(
-                        "Class: %s\nName: %s\nID: %s\n" +
+                    StringBuilder tooltipBuilder = new StringBuilder();
+                    tooltipBuilder.append(String.format("Class: %s\nName: %s\n", className, name));
+                    
+                    // Show all available IDs
+                    if (customId != null) {
+                        tooltipBuilder.append(String.format("Custom ID: %s\n", customId));
+                    }
+                    if (kId != null) {
+                        tooltipBuilder.append(String.format("kId: %s\n", kId));
+                    }
+                    if (qupathId != null) {
+                        tooltipBuilder.append(String.format("QuPath UUID: %s\n", qupathId));
+                    }
+                    
+                    tooltipBuilder.append(String.format(
                         "Centroid: (%.1f, %.1f)\nArea: %.2f µm²\n" +
                         "Measurements: %d\n\nDouble-click to jump to this annotation",
-                        className, name, id,
                         roi.getCentroidX(), roi.getCentroidY(),
                         roi.getScaledArea(1.0, 1.0),
                         numMeasurements
-                    );
+                    ));
+                    
+                    String tooltipText = tooltipBuilder.toString();
                     setTooltip(new Tooltip(tooltipText));
                     
                     // Color based on classification
@@ -247,10 +279,27 @@ public class AnnotationNavigatorCommand {
                     return true;
                 }
                 
-                // Search in ID
+                // Search in QuPath internal ID (UUID)
                 if (obj.getID() != null && 
                     obj.getID().toString().toLowerCase().contains(lowerSearch)) {
                     return true;
+                }
+                
+                // Search in custom ID properties (from imported JSON)
+                // Check for "id" property
+                if (obj.retrieveMetadataValue("id") != null) {
+                    String customId = obj.retrieveMetadataValue("id").toString().toLowerCase();
+                    if (customId.contains(lowerSearch)) {
+                        return true;
+                    }
+                }
+                
+                // Check for "kId" property  
+                if (obj.retrieveMetadataValue("kId") != null) {
+                    String kId = obj.retrieveMetadataValue("kId").toString().toLowerCase();
+                    if (kId.contains(lowerSearch)) {
+                        return true;
+                    }
                 }
                 
                 // Search in measurements
